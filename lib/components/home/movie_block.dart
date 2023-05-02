@@ -5,7 +5,7 @@ class MovieBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 160,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

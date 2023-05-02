@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:movie_theater_app/components/home/movie_block.dart';
 import 'package:movie_theater_app/pages/movie_page.dart';
 
@@ -20,7 +18,7 @@ class _MoviesListState extends State<MoviesList> {
       children: [
         for (int i = 0; i < 7; i++)
           GestureDetector(
-            child: MovieBlock(),
+            child: const MovieBlock(),
             onTap: () {
               Navigator.push(
                 context,

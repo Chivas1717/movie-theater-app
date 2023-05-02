@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LoginBtn extends StatelessWidget {
-  final String text;
-
-  const LoginBtn({super.key, required this.text});
+  const LoginBtn({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,7 @@ class LoginBtn extends StatelessWidget {
       ),
       child: const Center(
         child: Text(
-          'Log in',
+          'Profile',
           style: TextStyle(fontWeight: FontWeight.w700),
         ),
       ),
