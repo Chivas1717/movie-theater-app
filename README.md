@@ -1,12 +1,10 @@
 # movie_theater_app
 
-A new Flutter project.
+This app allows its users find best cinemas and purchase tickets with very easy registration
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
+Here will be some screenshots 
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
