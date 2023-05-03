@@ -1,6 +1,9 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
+import 'package:movie_theater_app/models/movie_model.dart';
 import 'package:movie_theater_app/utils/secure_storage.dart';
 
 class AuthRepository {
@@ -41,6 +44,42 @@ class AuthRepository {
       final String accessToken = response.data['data']['accessToken'];
       SecureStorage.setToken(accessToken);
       return accessToken;
+    } else {
+      throw Exception(response.statusMessage);
+    }
+  }
+}
+
+class MoviesRepository {
+  String apiUrl = 'https://fs-mt.qwerty123.tech';
+
+  Future<List<MovieModel>> getMovies(searchValue, dateValue) async {
+    log(searchValue);
+    var dio = Dio();
+    String date;
+    String search;
+
+    if (dateValue.isNotEmpty) {
+      date = dateValue;
+    } else {
+      var formatter = DateFormat('yyyy-MM-dd');
+      date = formatter.format(DateTime.now());
+    }
+
+    search = searchValue.isNotEmpty ? '&query=$searchValue' : '';
+
+    String accessToken = await SecureStorage.getToken('token');
+
+    Response response = await dio.get(
+      '$apiUrl/api/movies?date=$date$search',
+      options: Options(
+        headers: {'Authorization': 'Bearer $accessToken'},
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      final List result = response.data['data'];
+      return result.map((e) => MovieModel.fromJson(e)).toList();
     } else {
       throw Exception(response.statusMessage);
     }

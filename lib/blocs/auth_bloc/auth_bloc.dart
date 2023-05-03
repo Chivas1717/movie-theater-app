@@ -3,12 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../repositories/repositories.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
-import 'dart:developer';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository _AuthRepository;
+  final AuthRepository _authRepository;
 
-  AuthBloc(this._AuthRepository) : super(AuthLoadingState()) {
+  AuthBloc(this._authRepository) : super(AuthLoadingState()) {
     on<RequestOtpAuthEvent>(_requestOtpAuthEvent);
     on<ProceedAuthEvent>(_proceedAuthEvent);
   }
@@ -16,8 +15,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _requestOtpAuthEvent(event, emit) async {
     emit(OtpLoadingState());
     try {
-      final result = await _AuthRepository.requestOtp(event.phoneNumber);
-
+      final result = await _authRepository.requestOtp(event.phoneNumber);
       emit(OtpLoadedState());
     } catch (e) {
       // log(e.toString());
@@ -29,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     emit(AuthLoadingState());
     try {
       final result =
-          await _AuthRepository.getAcessToken(event.phoneNumber, event.otp);
+          await _authRepository.getAcessToken(event.phoneNumber, event.otp);
       emit(AuthLoadedState(result));
     } catch (e) {
       emit(AuthErrorState(e.toString()));

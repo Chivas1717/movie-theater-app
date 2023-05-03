@@ -10,10 +10,10 @@ class AuthLoadingState extends AuthState {
 }
 
 class AuthLoadedState extends AuthState {
-  final String access_token;
-  AuthLoadedState(this.access_token);
+  final String accessToken;
+  AuthLoadedState(this.accessToken);
   @override
-  List<Object?> get props => [access_token];
+  List<Object?> get props => [accessToken];
 }
 
 class AuthErrorState extends AuthState {

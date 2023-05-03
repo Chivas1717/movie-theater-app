@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movie_theater_app/models/movie_model.dart';
 
 class MovieBlock extends StatelessWidget {
-  const MovieBlock({super.key});
+  final MovieModel movie;
+  const MovieBlock({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +17,9 @@ class MovieBlock extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              image: const DecorationImage(
+              image: DecorationImage(
                 fit: BoxFit.cover,
-                image: ExactAssetImage('assets/imgs/test_movie.png'),
+                image: NetworkImage(movie.image!),
               ),
               boxShadow: const [
                 BoxShadow(
@@ -30,7 +32,7 @@ class MovieBlock extends StatelessWidget {
             child: Container(
               margin: const EdgeInsets.fromLTRB(100, 0, 0, 190),
               width: double.infinity,
-              height: 20,
+              height: 30,
               decoration: BoxDecoration(
                 color: const Color(0xffff7f36),
                 borderRadius: BorderRadius.circular(4),
@@ -42,14 +44,16 @@ class MovieBlock extends StatelessWidget {
                   ),
                 ],
               ),
-              child: const Center(
-                child: Text(
-                  '7.9',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    height: 1.2575,
-                    color: Color(0xffffffff),
+              child: Center(
+                child: Container(
+                  child: Text(
+                    movie.rating!,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      // height: 1.2575,
+                      color: Color(0xffffffff),
+                    ),
                   ),
                 ),
               ),
@@ -58,15 +62,15 @@ class MovieBlock extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Text(
-            'The Batman',
+          Text(
+            movie.name!,
             style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
           ),
           const SizedBox(
             height: 4,
           ),
-          const Text(
-            'Action',
+          Text(
+            movie.genre!,
             style: TextStyle(fontWeight: FontWeight.w500, color: Colors.grey),
           )
         ],

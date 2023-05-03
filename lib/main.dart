@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_theater_app/blocs/movies_bloc/movies_bloc.dart';
 import 'package:movie_theater_app/pages/home_page.dart';
 import 'package:movie_theater_app/pages/login/login_page.dart';
 
@@ -15,10 +16,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc(
-        AuthRepository(),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthBloc>(
+          create: (context) => AuthBloc(
+            AuthRepository(),
+          ),
+        ),
+        BlocProvider<MoviesBloc>(
+          create: (context) => MoviesBloc(
+            MoviesRepository(),
+          ),
+        )
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
