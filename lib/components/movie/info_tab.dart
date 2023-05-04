@@ -26,24 +26,25 @@ class _InfoTabState extends State<InfoTab> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // VideoPlayer(youtubeUrl: 'https://www.youtube.com/watch?v=mqqft2x_Aa4')
-          SizedBox(
+          // const SizedBox(
+          //   height: 1,
+          // ),
+          // VideoPlayer(youtubeUrl: widget.movie.trailer!),
+          const SizedBox(
             height: 1,
           ),
           Container(
             height: 200,
             width: double.infinity,
-            decoration: BoxDecoration(color: Colors.red),
+            decoration: const BoxDecoration(color: Colors.red),
             child: const Center(
-              child: Text(
-                'Trailer player',
-              ),
+              child: Text('Trailer player'),
             ),
           ),
           Container(
             height: 60,
             width: double.infinity,
-            decoration: BoxDecoration(color: Color(0xb21e283d)),
+            decoration: const BoxDecoration(color: Color(0xb21e283d)),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -51,15 +52,15 @@ class _InfoTabState extends State<InfoTab> {
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          '8.1',
-                          style: TextStyle(
+                          widget.movie.rating!,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
                         ),
-                        Text(
+                        const Text(
                           'IMDB',
                           style: TextStyle(
                             color: Colors.grey,
@@ -74,15 +75,15 @@ class _InfoTabState extends State<InfoTab> {
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Text(
-                          '143min',
-                          style: TextStyle(
+                          '${widget.movie.duration}min',
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                           ),
                         ),
-                        Text(
+                        const Text(
                           'RUNTIME',
                           style: TextStyle(
                             color: Colors.grey,
@@ -97,13 +98,12 @@ class _InfoTabState extends State<InfoTab> {
             ),
           ),
           Container(
-            // height: 70,
             padding: const EdgeInsets.fromLTRB(15, 15, 15, 90),
             child: Column(
               children: [
-                const Text(
-                  'Чарівний злодій та група умілих авантюристів вирішують здійснити епічне пограбування, щоб повернути втрачену реліквію. Але все йде шкереберть, коли на шляху героїв постає неочікувана перешкода.',
-                  style: TextStyle(
+                Text(
+                  widget.movie.plot!,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                   ),
@@ -112,9 +112,9 @@ class _InfoTabState extends State<InfoTab> {
                   height: 12,
                 ),
                 Table(
-                  children: const [
+                  children: [
                     TableRow(children: [
-                      Text(
+                      const Text(
                         "Certificate",
                         style: TextStyle(
                           fontSize: 15.0,
@@ -123,8 +123,8 @@ class _InfoTabState extends State<InfoTab> {
                         ),
                       ),
                       Text(
-                        "16 +",
-                        style: TextStyle(
+                        '${widget.movie.age!}+',
+                        style: const TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -132,7 +132,7 @@ class _InfoTabState extends State<InfoTab> {
                     ]),
                     rowSpacer,
                     TableRow(children: [
-                      Text(
+                      const Text(
                         "Release",
                         style: TextStyle(
                           fontSize: 15.0,
@@ -141,34 +141,36 @@ class _InfoTabState extends State<InfoTab> {
                         ),
                       ),
                       Text(
-                        "2022",
-                        style: TextStyle(
+                        '${widget.movie.year!}',
+                        style: const TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ]),
                     rowSpacer,
-                    TableRow(children: [
-                      Text(
-                        "Genre",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey,
+                    TableRow(
+                      children: [
+                        const Text(
+                          "Genre",
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Action, Horror",
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
+                        Text(
+                          widget.movie.genre!,
+                          style: const TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ]),
+                      ],
+                    ),
                     rowSpacer,
                     TableRow(children: [
-                      Text(
+                      const Text(
                         "Director",
                         style: TextStyle(
                           fontSize: 15.0,
@@ -177,8 +179,8 @@ class _InfoTabState extends State<InfoTab> {
                         ),
                       ),
                       Text(
-                        "Steven Spilberg",
-                        style: TextStyle(
+                        widget.movie.director!,
+                        style: const TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,
                         ),
@@ -195,7 +197,7 @@ class _InfoTabState extends State<InfoTab> {
                         ),
                       ),
                       Text(
-                        "Robert Pattinson, Zoë Kravitz, Jeffrey Wright, Colin Farrell, Paul Dano, John Turturro, Andy Serkis, Peter Sarsgaard",
+                        widget.movie.starring!,
                         style: TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,

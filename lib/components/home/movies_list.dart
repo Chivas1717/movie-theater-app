@@ -4,8 +4,9 @@ import 'package:movie_theater_app/models/movie_model.dart';
 import 'package:movie_theater_app/pages/movie_page.dart';
 
 class MoviesList extends StatefulWidget {
-  List<MovieModel> movies;
-  MoviesList({super.key, required this.movies});
+  final List<MovieModel> movies;
+  final String mainDate;
+  const MoviesList({super.key, required this.movies, required this.mainDate});
 
   @override
   State<MoviesList> createState() => _MoviesListState();
@@ -26,7 +27,8 @@ class _MoviesListState extends State<MoviesList> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return MoviePage(movie: widget.movies[i]);
+                    return MoviePage(
+                        movie: widget.movies[i], mainDate: widget.mainDate);
                   },
                 ),
               );

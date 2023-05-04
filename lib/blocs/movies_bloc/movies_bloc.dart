@@ -17,7 +17,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     try {
       final result =
           await _moviesRepository.getMovies(event.searchValue, event.dateValue);
-      log('result accepted');
+      // log('result accepted');
       emit(MoviesLoadedState(result));
     } catch (e) {
       log(e.toString());

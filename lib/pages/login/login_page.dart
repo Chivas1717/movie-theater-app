@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
       builder: (context, state) {
         return Stack(children: [
           Image.network(
-            'https://i.giphy.com/media/l1J3rHmZ4Wlj8nII0/200.gif',
+            'https://i.giphy.com/media/DPSWVkL9t5nh58cMlo/200.gif',
             fit: BoxFit.cover,
             height: MediaQuery.of(context).size.height,
             width: double.infinity,
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                                 children: <Widget>[
                                   Center(
                                     child: Container(
-                                      height: 160,
+                                      height: 110,
                                       constraints:
                                           const BoxConstraints(maxWidth: 500),
                                       margin: const EdgeInsets.only(top: 100),
@@ -96,14 +96,6 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                 ),
                               ),
-                              // const Text(
-                              //   'CineApp',
-                              //   style: TextStyle(
-                              //     color: Color(0xfffc6c19),
-                              //     fontSize: 30,
-                              //     fontWeight: FontWeight.w800,
-                              //   ),
-                              // ),
                             ),
                           ],
                         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_bloc.dart';
+import 'package:movie_theater_app/blocs/sessions_bloc/sessions_bloc.dart';
 import 'package:movie_theater_app/pages/home_page.dart';
 import 'package:movie_theater_app/pages/login/login_page.dart';
 
@@ -27,7 +28,12 @@ class MyApp extends StatelessWidget {
           create: (context) => MoviesBloc(
             MoviesRepository(),
           ),
-        )
+        ),
+        BlocProvider<SessionsBloc>(
+          create: (context) => SessionsBloc(
+            SessionsRepository(),
+          ),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

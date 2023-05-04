@@ -25,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
   String searchValue = '';
-  String dateValue = '';
+  String dateValue = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
   void onTapDateField() async {
     DateTime? pickedDate = await showDatePicker(
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    dateController.text = "";
+    dateController.text = DateFormat('yyyy-MM-dd').format(DateTime.now());
     super.initState();
   }
 
@@ -239,7 +239,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             const SizedBox(
                               height: 20,
                             ),
-                            MoviesList(movies: movies),
+                            MoviesList(movies: movies, mainDate: dateValue),
                           ],
                         ),
                       ),

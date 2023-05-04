@@ -7,7 +7,8 @@ import 'package:movie_theater_app/models/movie_model.dart';
 
 class MoviePage extends StatefulWidget {
   final MovieModel movie;
-  const MoviePage({super.key, required this.movie});
+  final String mainDate;
+  const MoviePage({super.key, required this.movie, required this.mainDate});
 
   @override
   State<MoviePage> createState() => _MoviePageState();
@@ -74,7 +75,13 @@ class _MoviePageState extends State<MoviePage> with TickerProviderStateMixin {
           ),
         ),
         body: TabBarView(
-          children: [InfoTab(movie: widget.movie), SessionsTab()],
+          children: [
+            InfoTab(movie: widget.movie),
+            SessionsTab(
+              mainDate: widget.mainDate,
+              movieId: widget.movie.id!,
+            )
+          ],
           controller: _controller,
         ),
         floatingActionButton: _selectedIndex == 0
