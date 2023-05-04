@@ -26,7 +26,7 @@ class _MoviesListState extends State<MoviesList> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const MoviePage();
+                    return MoviePage(movie: widget.movies[i]);
                   },
                 ),
               );

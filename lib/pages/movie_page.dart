@@ -3,9 +3,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:movie_theater_app/components/movie/info_tab.dart';
 import 'package:movie_theater_app/components/movie/sessions_tab.dart';
+import 'package:movie_theater_app/models/movie_model.dart';
 
 class MoviePage extends StatefulWidget {
-  const MoviePage({super.key});
+  final MovieModel movie;
+  const MoviePage({super.key, required this.movie});
 
   @override
   State<MoviePage> createState() => _MoviePageState();
@@ -32,7 +34,10 @@ class _MoviePageState extends State<MoviePage> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  static const List<Widget> _widgetOptions = <Widget>[InfoTab(), SessionsTab()];
+  // static final List<Widget> _widgetOptions = <Widget>[
+  //   InfoTab(movie: widget.movie),
+  //   SessionsTab()
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +49,8 @@ class _MoviePageState extends State<MoviePage> with TickerProviderStateMixin {
           shape:
               const Border(bottom: BorderSide(color: Colors.grey, width: .2)),
           centerTitle: true,
-          title: const Text(
-            'The Batman',
+          title: Text(
+            widget.movie.name!,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
           ),
           bottom: TabBar(
@@ -69,7 +74,7 @@ class _MoviePageState extends State<MoviePage> with TickerProviderStateMixin {
           ),
         ),
         body: TabBarView(
-          children: _widgetOptions,
+          children: [InfoTab(movie: widget.movie), SessionsTab()],
           controller: _controller,
         ),
         floatingActionButton: _selectedIndex == 0

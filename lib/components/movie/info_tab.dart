@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:movie_theater_app/components/movie/youtube_player.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../models/movie_model.dart';
+
 class InfoTab extends StatefulWidget {
-  const InfoTab({super.key});
+  final MovieModel movie;
+  const InfoTab({super.key, required this.movie});
 
   @override
   State<InfoTab> createState() => _InfoTabState();
