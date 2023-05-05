@@ -97,8 +97,7 @@ class SessionsRepository {
     if (dateValue.isNotEmpty) {
       date = dateValue;
     } else {
-      var formatter = DateFormat('yyyy-MM-dd');
-      date = formatter.format(DateTime.now());
+      date = DateFormat('yyyy-MM-dd').format(DateTime.now());
     }
 
     String accessToken = await SecureStorage.getToken('token');

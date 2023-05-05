@@ -33,7 +33,7 @@ class _OtpPageState extends State<OtpPage> {
         height: 50,
         width: 50,
         decoration: BoxDecoration(
-            border: Border.all(color: const Color(0xfffc6c19), width: 0),
+            border: Border.all(color: const Color(0xfffc6c19), width: 2),
             borderRadius: const BorderRadius.all(Radius.circular(8))),
         child: Center(
             child: Text(
@@ -46,8 +46,9 @@ class _OtpPageState extends State<OtpPage> {
         height: 50,
         width: 50,
         decoration: BoxDecoration(
-            border: Border.all(color: const Color(0xfffc6c19), width: 0),
-            borderRadius: const BorderRadius.all(Radius.circular(8))),
+          border: Border.all(color: const Color(0xfffc6c19), width: 2),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+        ),
       );
     }
   }
@@ -140,7 +141,8 @@ class _OtpPageState extends State<OtpPage> {
                                               ),
                                               child: const Center(
                                                 child: Text(
-                                                  'Enter 4 digits verification code sent to your number',
+                                                  'Waiting for the code...',
+                                                  // 'Enter 4 digits verification code sent to your number',
                                                   style: TextStyle(
                                                     color: Color(0xfffc6c19),
                                                     fontSize: 20,
