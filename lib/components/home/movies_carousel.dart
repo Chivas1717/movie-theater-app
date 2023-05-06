@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_theater_app/models/movie_model.dart';
 
-import '../../pages/movie_page.dart';
+import '../../pages/movie/movie_page.dart';
 
 class MoviesCarousel extends StatefulWidget {
   final List<MovieModel> movies;
@@ -110,8 +110,10 @@ class _MoviesCarouselState extends State<MoviesCarousel> {
                                   Text(
                                     movie.name!,
                                     style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.grey[800],
+                                    ),
                                   ),
                                   // rating
                                   SizedBox(height: 20),

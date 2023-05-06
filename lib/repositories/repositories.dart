@@ -101,6 +101,8 @@ class SessionsRepository {
     }
 
     String accessToken = await SecureStorage.getToken('token');
+    // log(accessToken);
+    // log(movieId);
 
     Response response = await dio.get(
       '$apiUrl/api/movies/sessions?movieId=$movieId&date=$date',

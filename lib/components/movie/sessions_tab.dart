@@ -7,6 +7,7 @@ import 'package:movie_theater_app/blocs/sessions_bloc/sessions_bloc.dart';
 import 'package:movie_theater_app/blocs/sessions_bloc/sessions_event.dart';
 import 'package:movie_theater_app/blocs/sessions_bloc/sessions_state.dart';
 import 'package:movie_theater_app/models/session_model.dart';
+import 'package:movie_theater_app/pages/movie/theater_page.dart';
 
 class SessionsTab extends StatefulWidget {
   final String mainDate;
@@ -51,6 +52,8 @@ class _SessionsTabState extends State<SessionsTab> {
           ),
         );
   }
+
+  void getSessionPrices() {}
 
   String convertDate(int date) {
     DateTime sessionDateTime = DateTime.fromMillisecondsSinceEpoch(date * 1000);
@@ -168,6 +171,13 @@ class _SessionsTabState extends State<SessionsTab> {
                   ),
                 ),
                 Table(
+                  columnWidths: {
+                    0: FlexColumnWidth(1.5),
+                    1: FlexColumnWidth(1),
+                    2: FlexColumnWidth(1),
+                    3: FlexColumnWidth(1),
+                    4: FlexColumnWidth(1.5),
+                  },
                   defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                   children: [
                     TableRow(
@@ -191,7 +201,7 @@ class _SessionsTabState extends State<SessionsTab> {
                           padding: EdgeInsets.all(5),
                           child: Center(
                               child: Text(
-                            'Adult',
+                            'Normal',
                             style: TextStyle(
                               color: Color.fromARGB(255, 106, 108, 116),
                               fontWeight: FontWeight.bold,
@@ -202,19 +212,7 @@ class _SessionsTabState extends State<SessionsTab> {
                           padding: EdgeInsets.all(5),
                           child: Center(
                             child: Text(
-                              'Child',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 106, 108, 116),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          child: Center(
-                            child: Text(
-                              'Student',
+                              'Comfort',
                               style: TextStyle(
                                 color: Color.fromARGB(255, 106, 108, 116),
                                 fontWeight: FontWeight.bold,
@@ -227,6 +225,18 @@ class _SessionsTabState extends State<SessionsTab> {
                           child: Center(
                             child: Text(
                               'VIP',
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 106, 108, 116),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          child: Center(
+                            child: Text(
+                              '',
                               style: TextStyle(
                                 color: Color.fromARGB(255, 106, 108, 116),
                                 fontWeight: FontWeight.bold,
@@ -301,13 +311,50 @@ class _SessionsTabState extends State<SessionsTab> {
                               ),
                             ),
                           ),
-                          Container(
-                            child: Center(
-                              child: Text(
-                                '15',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return TheaterPage(session: sessions[i]);
+                                  },
+                                ),
+                              );
+                            },
+                            child: Container(
+                              child: Center(
+                                child: Container(
+                                  height: 28,
+                                  margin:
+                                      const EdgeInsets.symmetric(horizontal: 5),
+                                  padding: const EdgeInsets.all(2),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    gradient: const LinearGradient(
+                                      begin: Alignment(0, -1),
+                                      end: Alignment(0, 1),
+                                      colors: <Color>[
+                                        Color(0xffff8036),
+                                        Color(0xfffc6c19)
+                                      ],
+                                      stops: <double>[0, 1],
+                                    ),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Color(0x3fff8036),
+                                        offset: Offset(0, 4),
+                                        blurRadius: 5,
+                                      ),
+                                    ],
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'Preview',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),

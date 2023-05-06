@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_theater_app/components/home/movie_block.dart';
 import 'package:movie_theater_app/models/movie_model.dart';
-import 'package:movie_theater_app/pages/movie_page.dart';
+import 'package:movie_theater_app/pages/movie/movie_page.dart';
 
 class MoviesList extends StatefulWidget {
   final List<MovieModel> movies;

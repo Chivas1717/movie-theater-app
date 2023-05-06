@@ -60,7 +60,7 @@ class Room {
 class Rows {
   int? id;
   int? index;
-  List<Seats>? seats;
+  List<Seat>? seats;
 
   Rows({this.id, this.index, this.seats});
 
@@ -68,9 +68,9 @@ class Rows {
     id = json['id'];
     index = json['index'];
     if (json['seats'] != null) {
-      seats = <Seats>[];
+      seats = <Seat>[];
       json['seats'].forEach((v) {
-        seats?.add(Seats.fromJson(v));
+        seats?.add(Seat.fromJson(v));
       });
     }
   }
@@ -86,16 +86,16 @@ class Rows {
   }
 }
 
-class Seats {
+class Seat {
   int? id;
   int? type;
   int? index;
   int? price;
   bool? isAvailable;
 
-  Seats({this.id, this.index, this.type, this.price, this.isAvailable});
+  Seat({this.id, this.index, this.type, this.price, this.isAvailable});
 
-  Seats.fromJson(Map<String, dynamic> json) {
+  Seat.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     index = json['index'];
     type = json['type'];
