@@ -2,7 +2,9 @@ import 'dart:developer';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_theater_app/components/movie/tickets_summary/dashed_ticket_separetor.dart';
 import 'package:movie_theater_app/components/movie/tickets_summary/session_info_block.dart';
+import 'package:movie_theater_app/components/movie/tickets_summary/tickets_block.dart';
 
 import '../../../models/movie_model.dart';
 import '../../../models/session_model.dart';
@@ -81,28 +83,28 @@ class TicketsSummaryBlock extends StatelessWidget {
             ),
 
             // //Separator
-            // const DashedTicketSeparator(),
+            const DashedTicketSeparator(),
 
-            // //Ticket details
-            // const Expanded(
-            //   child: TicketDetailsList(),
-            // ),
+            //Ticket details
+            const Expanded(
+              child: TicketsBlock(),
+            ),
 
-            // //Expand icon
-            // Container(
-            //   width: double.infinity,
-            //   decoration: const BoxDecoration(
-            //     color: Constants.primaryColor,
-            //     borderRadius: BorderRadius.only(
-            //       bottomLeft: Radius.circular(10),
-            //       bottomRight: Radius.circular(10),
-            //     ),
-            //   ),
-            //   child: const Icon(
-            //     Icons.expand_more_sharp,
-            //     color: Colors.white,
-            //   ),
-            // ),
+            //Expand icon
+            Container(
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                color: Color(0xFFf03400),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
+              ),
+              child: const Icon(
+                Icons.expand_more_sharp,
+                color: Colors.white,
+              ),
+            ),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_theater_app/components/movie/theater/confirm_tickets_button.dart';
 import 'package:movie_theater_app/components/movie/tickets_summary/tickets_summary_block.dart';
 
 import '../../models/movie_model.dart';
@@ -33,8 +34,11 @@ class TicketSummaryPage extends StatelessWidget {
               movie: movie,
             ),
 
-            // //Confirm Button
-            // ConfirmBookingsButton(),
+            //Confirm Button
+            ConfirmTicketsButton(
+              movie: movie,
+              session: session,
+            ),
 
             const SizedBox(height: 5),
           ],
