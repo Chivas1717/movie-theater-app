@@ -7,14 +7,13 @@ import 'package:movie_theater_app/models/session_model.dart';
 
 class SeatWidget extends StatefulWidget {
   final Seat seat;
-  final selectedSeats;
   final color;
 
-  const SeatWidget(
-      {super.key,
-      required this.seat,
-      required this.selectedSeats,
-      required this.color});
+  const SeatWidget({
+    super.key,
+    required this.seat,
+    required this.color,
+  });
 
   @override
   State<SeatWidget> createState() => _SeatWidgetState();

@@ -24,21 +24,3 @@ class SessionsErrorState extends SessionsState {
   @override
   List<Object?> get props => [error];
 }
-
-class OtpLoadingState extends SessionsState {
-  @override
-  List<Object?> get props => [];
-}
-
-class OtpLoadedState extends SessionsState {
-  OtpLoadedState();
-  @override
-  List<Object?> get props => [];
-}
-
-class OtpErrorState extends SessionsState {
-  final String error;
-  OtpErrorState(this.error);
-  @override
-  List<Object?> get props => [error];
-}

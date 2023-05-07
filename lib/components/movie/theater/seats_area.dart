@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_theater_app/blocs/tickets_bloc/tickets_event.dart';
 
-//Widgets
+import '../../../blocs/tickets_bloc/tickets_bloc.dart';
 import '../../../models/session_model.dart';
 import 'seat_widget.dart';
 
@@ -11,6 +13,7 @@ class SeatsArea extends StatefulWidget {
   final double maxGridHeight, seatSize, seatGap;
   final int numOfRows, maxRows, seatsPerRow;
   final ScrollController screenScrollController;
+  final List<SelectedSeat> selectedSeats;
 
   const SeatsArea(
       {required this.maxGridHeight,
@@ -20,7 +23,8 @@ class SeatsArea extends StatefulWidget {
       required this.maxRows,
       required this.seatsPerRow,
       required this.screenScrollController,
-      required this.session});
+      required this.session,
+      required this.selectedSeats});
 
   @override
   State<SeatsArea> createState() => _SeatsAreaState();
@@ -42,23 +46,29 @@ class _SeatsAreaState extends State<SeatsArea> {
   }
 
   Color getColor(Seat seat) {
-    if (selectedSeats.contains(seat)) return Colors.red;
+    if (widget.selectedSeats.any((item) => item.seat == seat))
+      return Colors.red;
     if (seat.isAvailable!)
-      return Colors.green;
+      return Colors.white;
     else
-      return Colors.grey;
+      return Color(0xFF5A5A5A);
   }
 
-  void toggleSelection(Seat seat) {
-    setState(() {
-      if (selectedSeats.contains(seat))
-        selectedSeats.remove(seat);
-      else
-        selectedSeats.add(seat);
-    });
-  }
+  void toggleSelection(SelectedSeat selectedSeat) {
+    context.read<TicketsBloc>().add(
+          UpdateSelectedSeatsEvent(selectedSeat: selectedSeat),
+        );
 
-  List<Seat> selectedSeats = [];
+    // // log(selectedSeat.row);
+    // setState(() {
+    //   if (widget.selectedSeats.any((item) => item.seat == selectedSeat.seat)) {
+    //     widget.selectedSeats
+    //         .removeWhere((item) => item.seat == selectedSeat.seat);
+    //   } else {
+    //     widget.selectedSeats.add(selectedSeat);
+    //   }
+    // });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,13 +127,23 @@ class _SeatsAreaState extends State<SeatsArea> {
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 5),
                                 child: GestureDetector(
-                                  onTap: () => toggleSelection(
-                                    widget.session.room!.rows![i].seats![j],
-                                  ),
+                                  onTap: widget.session.room!.rows![i].seats![j]
+                                          .isAvailable!
+                                      ? () {
+                                          var seat = widget
+                                              .session.room!.rows![i].seats![j];
+
+                                          toggleSelection(
+                                            SelectedSeat(
+                                              seat: seat,
+                                              row: String.fromCharCode(i + 65),
+                                            ),
+                                          );
+                                        }
+                                      : () {},
                                   child: SeatWidget(
                                     seat:
                                         widget.session.room!.rows![i].seats![j],
-                                    selectedSeats: selectedSeats,
                                     color: getColor(
                                       widget.session.room!.rows![i].seats![j],
                                     ),

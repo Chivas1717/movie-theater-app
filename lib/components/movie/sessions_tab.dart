@@ -6,13 +6,14 @@ import 'package:intl/intl.dart';
 import 'package:movie_theater_app/blocs/sessions_bloc/sessions_bloc.dart';
 import 'package:movie_theater_app/blocs/sessions_bloc/sessions_event.dart';
 import 'package:movie_theater_app/blocs/sessions_bloc/sessions_state.dart';
+import 'package:movie_theater_app/models/movie_model.dart';
 import 'package:movie_theater_app/models/session_model.dart';
 import 'package:movie_theater_app/pages/movie/theater_page.dart';
 
 class SessionsTab extends StatefulWidget {
   final String mainDate;
-  final int movieId;
-  const SessionsTab({super.key, required this.mainDate, required this.movieId});
+  final MovieModel movie;
+  const SessionsTab({super.key, required this.mainDate, required this.movie});
   @override
   State<SessionsTab> createState() => _SessionsTabState();
 }
@@ -47,7 +48,7 @@ class _SessionsTabState extends State<SessionsTab> {
   void refreshSessions() {
     context.read<SessionsBloc>().add(
           LoadSessionsEvent(
-            movieId: '${widget.movieId}',
+            movieId: '${widget.movie.id}',
             dateValue: dateValue,
           ),
         );
@@ -317,7 +318,9 @@ class _SessionsTabState extends State<SessionsTab> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return TheaterPage(session: sessions[i]);
+                                    return TheaterPage(
+                                        session: sessions[i],
+                                        movie: widget.movie);
                                   },
                                 ),
                               );

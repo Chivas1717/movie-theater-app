@@ -45,6 +45,7 @@ dependencies:
   intl: ^0.18.1
   easy_search_bar: ^2.5.0
   carousel_slider: ^4.2.1
+  cached_network_image: ^3.2.3
 
 dev_dependencies:
   flutter_test:

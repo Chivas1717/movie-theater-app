@@ -79,7 +79,7 @@ class _MoviePageState extends State<MoviePage> with TickerProviderStateMixin {
             InfoTab(movie: widget.movie),
             SessionsTab(
               mainDate: widget.mainDate,
-              movieId: widget.movie.id!,
+              movie: widget.movie,
             )
           ],
           controller: _controller,

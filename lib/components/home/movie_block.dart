@@ -76,14 +76,20 @@ class MovieBlock extends StatelessWidget {
           ),
           Text(
             movie.name!,
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+            style: const TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
+            ),
           ),
           const SizedBox(
             height: 4,
           ),
           Text(
             movie.genre!,
-            style: TextStyle(fontWeight: FontWeight.w500, color: Colors.grey),
+            style: const TextStyle(
+              fontWeight: FontWeight.w500,
+              color: Colors.grey,
+            ),
           )
         ],
       ),

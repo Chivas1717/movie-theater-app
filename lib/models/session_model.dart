@@ -113,3 +113,13 @@ class Seat {
     return data;
   }
 }
+
+class SelectedSeat {
+  Seat seat;
+  String row;
+
+  SelectedSeat({
+    required this.seat,
+    required this.row,
+  });
+}

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_theater_app/models/session_model.dart';
 
 @immutable
 abstract class SessionsEvent extends Equatable {
