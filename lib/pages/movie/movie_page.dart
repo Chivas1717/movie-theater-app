@@ -51,6 +51,7 @@ class _MoviePageState extends State<MoviePage> with TickerProviderStateMixin {
               const Border(bottom: BorderSide(color: Colors.grey, width: .2)),
           centerTitle: true,
           title: Text(
+            overflow: TextOverflow.ellipsis,
             widget.movie.name!,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
           ),

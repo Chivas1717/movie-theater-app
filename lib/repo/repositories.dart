@@ -148,7 +148,6 @@ class PaymentRepository {
 
     if (response.statusCode == 200) {
       final bool result = response.data['success'];
-      log('$result');
       return result; // response.body;
     } else {
       throw Exception(response.statusMessage);
@@ -166,7 +165,6 @@ class PaymentRepository {
     var dio = Dio();
 
     String accessToken = await SecureStorage.getToken('token');
-    log(accessToken);
     List<int> selectedSeatsIds = selectedSeats.map((e) => e.seat.id!).toList();
 
     Response response = await dio.post(
@@ -199,6 +197,8 @@ class ProfileRepository {
   Future<ProfileModel> getProfileInfo() async {
     var dio = Dio();
     String accessToken = await SecureStorage.getToken('token');
+
+    log(accessToken);
 
     Response response = await dio.get(
       '$apiUrl/api/user',

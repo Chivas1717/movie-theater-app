@@ -86,25 +86,6 @@ class _OtpPageState extends State<OtpPage> {
                 body: Center(
                   child: Scaffold(
                     backgroundColor: Colors.transparent,
-                    // appBar: AppBar(
-                    //   leading: IconButton(
-                    //     icon: Container(
-                    //       padding: const EdgeInsets.all(10),
-                    //       decoration: const BoxDecoration(
-                    //         borderRadius: BorderRadius.all(Radius.circular(20)),
-                    //         color: Color(0xb21e283d),
-                    //       ),
-                    //       child: const Icon(
-                    //         Icons.arrow_back_ios,
-                    //         color: Color(0xfffc6c19),
-                    //         size: 16,
-                    //       ),
-                    //     ),
-                    //     onPressed: () => Navigator.of(context).pop(),
-                    //   ),
-                    //   elevation: 0,
-                    //   systemOverlayStyle: SystemUiOverlayStyle.dark,
-                    // ),
                     body: SafeArea(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -142,7 +123,6 @@ class _OtpPageState extends State<OtpPage> {
                                               child: const Center(
                                                 child: Text(
                                                   'Waiting for the code...',
-                                                  // 'Enter 4 digits verification code sent to your number',
                                                   style: TextStyle(
                                                     color: Color(0xfffc6c19),
                                                     fontSize: 20,
@@ -264,7 +244,7 @@ class _OtpPageState extends State<OtpPage> {
                                 )
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

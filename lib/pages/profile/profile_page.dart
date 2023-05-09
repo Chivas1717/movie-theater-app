@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_state.dart';
 
-import '../components/profile/browse_moovies_button.dart';
-import '../components/profile/user_profile_info.dart';
-import '../components/profile/view_tickets_button.dart';
+import '../../components/profile/browse_moovies_button.dart';
+import '../../components/profile/user_profile_info.dart';
+import '../../components/profile/view_tickets_button.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});

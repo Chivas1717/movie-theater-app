@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_event.dart';
 
-import '../../pages/profile_page.dart';
+import '../../pages/profile/profile_page.dart';
 
 class ProfileBtn extends StatelessWidget {
   const ProfileBtn({super.key});

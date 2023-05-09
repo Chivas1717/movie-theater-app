@@ -65,7 +65,6 @@ class _SessionsTabState extends State<SessionsTab> {
 
   @override
   void initState() {
-    // log(widget.mainDate);
     dateValue = widget.mainDate;
     dateController.text = widget.mainDate;
     refreshSessions();
@@ -109,7 +108,7 @@ class _SessionsTabState extends State<SessionsTab> {
                 Container(
                   height: 80,
                   width: double.infinity,
-                  decoration: BoxDecoration(color: Color(0xb21e283d)),
+                  decoration: const BoxDecoration(color: Color(0xb21e283d)),
                   child: Row(
                     children: [
                       Expanded(
@@ -172,7 +171,7 @@ class _SessionsTabState extends State<SessionsTab> {
                   ),
                 ),
                 Table(
-                  columnWidths: {
+                  columnWidths: const {
                     0: FlexColumnWidth(1.5),
                     1: FlexColumnWidth(1),
                     2: FlexColumnWidth(1),
@@ -182,13 +181,13 @@ class _SessionsTabState extends State<SessionsTab> {
                   defaultVerticalAlignment: TableCellVerticalAlignment.middle,
                   children: [
                     TableRow(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0xff253454),
                       ),
                       children: [
                         Container(
-                          padding: EdgeInsets.all(5),
-                          child: Center(
+                          padding: const EdgeInsets.all(5),
+                          child: const Center(
                             child: Text(
                               'Time',
                               style: TextStyle(
@@ -199,8 +198,8 @@ class _SessionsTabState extends State<SessionsTab> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(5),
-                          child: Center(
+                          padding: const EdgeInsets.all(5),
+                          child: const Center(
                               child: Text(
                             'Normal',
                             style: TextStyle(
@@ -210,8 +209,8 @@ class _SessionsTabState extends State<SessionsTab> {
                           )),
                         ),
                         Container(
-                          padding: EdgeInsets.all(5),
-                          child: Center(
+                          padding: const EdgeInsets.all(5),
+                          child: const Center(
                             child: Text(
                               'Comfort',
                               style: TextStyle(
@@ -222,8 +221,8 @@ class _SessionsTabState extends State<SessionsTab> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(5),
-                          child: Center(
+                          padding: const EdgeInsets.all(5),
+                          child: const Center(
                             child: Text(
                               'VIP',
                               style: TextStyle(
@@ -234,8 +233,8 @@ class _SessionsTabState extends State<SessionsTab> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.all(5),
-                          child: Center(
+                          padding: const EdgeInsets.all(5),
+                          child: const Center(
                             child: Text(
                               '',
                               style: TextStyle(
@@ -249,7 +248,7 @@ class _SessionsTabState extends State<SessionsTab> {
                     ),
                     for (var i = 0; i < sessions.length; i++)
                       TableRow(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
                               width: .2,
@@ -259,19 +258,19 @@ class _SessionsTabState extends State<SessionsTab> {
                         ),
                         children: [
                           Container(
-                            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                             child: Column(
                               children: [
                                 Text(
                                   convertDate(sessions[i].date!),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 17,
                                     fontWeight: FontWeight.w900,
                                   ),
                                 ),
                                 Text(
                                   sessions[i].type!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -280,7 +279,7 @@ class _SessionsTabState extends State<SessionsTab> {
                             ),
                           ),
                           Container(
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 '15',
                                 style: TextStyle(
@@ -291,7 +290,7 @@ class _SessionsTabState extends State<SessionsTab> {
                             ),
                           ),
                           Container(
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 '15',
                                 style: TextStyle(
@@ -302,7 +301,7 @@ class _SessionsTabState extends State<SessionsTab> {
                             ),
                           ),
                           Container(
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 '15',
                                 style: TextStyle(

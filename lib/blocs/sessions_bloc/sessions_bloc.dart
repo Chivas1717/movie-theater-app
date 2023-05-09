@@ -18,7 +18,6 @@ class SessionsBloc extends Bloc<SessionsEvent, SessionsState> {
     try {
       final result =
           await _sessionsRepository.getSessions(event.movieId, event.dateValue);
-      log('result sessions accepted');
       emit(SessionsLoadedState(result));
     } catch (e) {
       log(e.toString());

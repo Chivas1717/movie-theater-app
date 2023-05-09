@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_bloc.dart';
 import 'package:movie_theater_app/blocs/payment_bloc/payment_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_bloc.dart';
+import 'package:movie_theater_app/blocs/purchased_tickets_bloc/purchased_tickets_bloc.dart';
 import 'package:movie_theater_app/blocs/sessions_bloc/sessions_bloc.dart';
 import 'package:movie_theater_app/blocs/tickets_bloc/tickets_bloc.dart';
 import 'package:movie_theater_app/pages/home_page.dart';
@@ -48,6 +49,11 @@ class MyApp extends StatelessWidget {
         BlocProvider<ProfileBloc>(
           create: (context) => ProfileBloc(
             ProfileRepository(),
+          ),
+        ),
+        BlocProvider<PurchasedTicketsBloc>(
+          create: (context) => PurchasedTicketsBloc(
+            PurchasedTicketsRepository(),
           ),
         ),
       ],

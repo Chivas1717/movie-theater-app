@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_theater_app/blocs/purchased_tickets_bloc/purchased_tickets_bloc.dart';
+import 'package:movie_theater_app/blocs/purchased_tickets_bloc/purchased_tickets_event.dart';
+
+import '../../pages/profile/purchased_tickets_page.dart';
 
 class ViewTicketsButton extends StatelessWidget {
   const ViewTicketsButton({super.key});
@@ -9,18 +14,17 @@ class ViewTicketsButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 0),
       child: TextButton(
         onPressed: () {
-          // BlocProvider.of<PaymentBloc>(context).add(
-          //   BookTicketsEvent(ticketsState.selectedSeats, session.id!),
-          // );
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) {
-          //       return PurschasedTicketsPage(
-          //       );
-          //     },
-          //   ),
-          // );
+          BlocProvider.of<PurchasedTicketsBloc>(context).add(
+            const GetPurchasedTicketsEvent(),
+          );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return PurchasedTicketsPage();
+              },
+            ),
+          );
         },
         child: Container(
           padding: const EdgeInsets.all(15),
