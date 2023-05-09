@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_event.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_state.dart';
-import 'package:movie_theater_app/repositories/repositories.dart';
+import 'package:movie_theater_app/repo/repositories.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   final MoviesRepository _moviesRepository;

@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../repositories/repositories.dart';
+import '../../repo/repositories.dart';
 import 'sessions_event.dart';
 import 'sessions_state.dart';
 

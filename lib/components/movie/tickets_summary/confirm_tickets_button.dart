@@ -5,6 +5,7 @@ import 'package:movie_theater_app/models/session_model.dart';
 
 import '../../../blocs/tickets_bloc/tickets_bloc.dart';
 import '../../../blocs/tickets_bloc/tickets_state.dart';
+import '../../../pages/movie/checkout_page.dart';
 
 class ConfirmTicketsButton extends StatelessWidget {
   final SessionModel session;
@@ -17,20 +18,20 @@ class ConfirmTicketsButton extends StatelessWidget {
     return BlocBuilder<TicketsBloc, TicketsState>(
       builder: (context, state) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.fromLTRB(12, 10, 12, 8),
           child: TextButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) {
-              //       return TicketSummaryPage(
-              //         session: session,
-              //         movie: movie,
-              //       );
-              //     },
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return CheckoutPage(
+                      session: session,
+                      movie: movie,
+                    );
+                  },
+                ),
+              );
             },
             child: Container(
               padding: const EdgeInsets.all(15),

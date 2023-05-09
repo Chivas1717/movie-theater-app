@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_bloc.dart';
+import 'package:movie_theater_app/blocs/payment_bloc/payment_bloc.dart';
+import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_bloc.dart';
 import 'package:movie_theater_app/blocs/sessions_bloc/sessions_bloc.dart';
 import 'package:movie_theater_app/blocs/tickets_bloc/tickets_bloc.dart';
 import 'package:movie_theater_app/pages/home_page.dart';
 import 'package:movie_theater_app/pages/login/login_page.dart';
 
 import 'blocs/auth_bloc/auth_bloc.dart';
-import 'repositories/repositories.dart';
+import 'repo/repositories.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,6 +39,16 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<TicketsBloc>(
           create: (context) => TicketsBloc(),
+        ),
+        BlocProvider<PaymentBloc>(
+          create: (context) => PaymentBloc(
+            PaymentRepository(),
+          ),
+        ),
+        BlocProvider<ProfileBloc>(
+          create: (context) => ProfileBloc(
+            ProfileRepository(),
+          ),
         ),
       ],
       child: MaterialApp(

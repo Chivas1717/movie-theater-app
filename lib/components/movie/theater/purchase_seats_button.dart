@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_theater_app/blocs/payment_bloc/payment_bloc.dart';
+import 'package:movie_theater_app/blocs/payment_bloc/payment_event.dart';
 import 'package:movie_theater_app/models/movie_model.dart';
 import 'package:movie_theater_app/models/session_model.dart';
 import 'package:movie_theater_app/pages/movie/tickets_summary_page.dart';
@@ -16,14 +18,17 @@ class PurchaseSeatsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TicketsBloc, TicketsState>(
-      builder: (context, state) {
-        bool disabled = state.selectedSeats.length == 0;
+      builder: (context, ticketsState) {
+        bool disabled = ticketsState.selectedSeats.isEmpty;
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: TextButton(
             onPressed: disabled
                 ? () {}
                 : () {
+                    BlocProvider.of<PaymentBloc>(context).add(
+                      BookTicketsEvent(ticketsState.selectedSeats, session.id!),
+                    );
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -51,7 +56,7 @@ class PurchaseSeatsButton extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'PURCHASE - ${state.selectedSeats.length} SEATS',
+                  'PURCHASE - ${ticketsState.selectedSeats.length} SEATS',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,

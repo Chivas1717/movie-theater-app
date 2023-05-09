@@ -34,7 +34,6 @@ class SelectedSeatsBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log('${contents.length}');
     return BlocBuilder<TicketsBloc, TicketsState>(
       builder: (context, state) {
         return SizedBox(

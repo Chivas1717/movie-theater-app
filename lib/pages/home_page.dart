@@ -1,21 +1,16 @@
-import 'dart:developer';
-import 'package:carousel_slider/carousel_controller.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:easy_search_bar/easy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_bloc.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_event.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_state.dart';
-import 'package:movie_theater_app/components/home/login_btn.dart';
+import 'package:movie_theater_app/components/home/profile_btn.dart';
 import 'package:movie_theater_app/components/home/movies_carousel.dart';
 import 'package:movie_theater_app/components/home/movies_list.dart';
 import 'package:movie_theater_app/models/movie_model.dart';
 
 import '../blocs/auth_bloc/auth_bloc.dart';
 import '../blocs/auth_bloc/auth_state.dart';
-import '../utils/secure_storage.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -55,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       refreshMovies();
     } else {
-      print("Date is not selected");
+      // print("Date is not selected");
     }
   }
 
@@ -191,7 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             const SizedBox(
                               width: 20,
                             ),
-                            LoginBtn()
+                            const ProfileBtn()
                           ],
                         ),
                       ),
@@ -212,17 +207,21 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.only(
-                                    top: 8.0, bottom: 8.0),
+                                  top: 8.0,
+                                  bottom: 8.0,
+                                ),
                                 child: Container(
                                   child: TextField(
                                     style: const TextStyle(color: Colors.white),
                                     textAlignVertical: TextAlignVertical.center,
                                     controller: _searchController,
                                     decoration: InputDecoration(
-                                      hintStyle:
-                                          const TextStyle(color: Colors.white),
-                                      suffixStyle:
-                                          const TextStyle(color: Colors.white),
+                                      hintStyle: const TextStyle(
+                                        color: Colors.white,
+                                      ),
+                                      suffixStyle: const TextStyle(
+                                        color: Colors.white,
+                                      ),
                                       hintText: 'Search...',
                                       suffixIcon: IconButton(
                                         icon: const Icon(

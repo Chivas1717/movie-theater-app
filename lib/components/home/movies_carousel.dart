@@ -72,143 +72,147 @@ class _MoviesCarouselState extends State<MoviesCarousel> {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
-                          width: MediaQuery.of(context).size.width,
-                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: SingleChildScrollView(
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return MoviePage(
-                                        movie: movie,
-                                        mainDate: DateFormat('yyyy-MM-dd')
-                                            .format(DateTime.now()),
-                                      );
-                                    },
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: SingleChildScrollView(
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return MoviePage(
+                                      movie: movie,
+                                      mainDate: DateFormat('yyyy-MM-dd')
+                                          .format(DateTime.now()),
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 320,
+                                  margin: EdgeInsets.only(top: 30),
+                                  clipBehavior: Clip.hardEdge,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
                                   ),
-                                );
-                              },
-                              child: Column(
-                                children: [
-                                  Container(
-                                    height: 320,
-                                    margin: EdgeInsets.only(top: 30),
-                                    clipBehavior: Clip.hardEdge,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Image.network(movie.image!,
-                                        fit: BoxFit.cover),
+                                  child: Image.network(
+                                    movie.image!,
+                                    fit: BoxFit.cover,
                                   ),
-                                  SizedBox(height: 20),
-                                  Text(
-                                    movie.name!,
+                                ),
+                                SizedBox(height: 20),
+                                Text(
+                                  movie.name!,
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[800],
+                                  ),
+                                ),
+                                // rating
+                                SizedBox(height: 20),
+                                Container(
+                                  child: Text(
+                                    movie.genre!,
                                     style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey[800],
+                                      fontSize: 14.0,
+                                      color: Colors.grey.shade600,
                                     ),
+                                    textAlign: TextAlign.center,
                                   ),
-                                  // rating
-                                  SizedBox(height: 20),
-                                  Container(
-                                    child: Text(
-                                      movie.genre!,
-                                      style: TextStyle(
-                                          fontSize: 14.0,
-                                          color: Colors.grey.shade600),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  SizedBox(height: 20),
-                                  AnimatedOpacity(
-                                    duration: Duration(milliseconds: 500),
-                                    opacity:
-                                        _current == widget.movies.indexOf(movie)
-                                            ? 1.0
-                                            : 0.0,
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 20.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.star,
-                                                  color: Colors.yellow,
-                                                  size: 20,
-                                                ),
-                                                SizedBox(width: 5),
-                                                Text(
-                                                  movie.rating!,
-                                                  style: TextStyle(
-                                                    fontSize: 14.0,
-                                                    color: Colors.grey.shade600,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.access_time,
+                                ),
+                                SizedBox(height: 20),
+                                AnimatedOpacity(
+                                  duration: Duration(milliseconds: 500),
+                                  opacity:
+                                      _current == widget.movies.indexOf(movie)
+                                          ? 1.0
+                                          : 0.0,
+                                  child: Container(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 20.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.star,
+                                                color: Colors.yellow,
+                                                size: 20,
+                                              ),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                movie.rating!,
+                                                style: TextStyle(
+                                                  fontSize: 14.0,
                                                   color: Colors.grey.shade600,
-                                                  size: 20,
                                                 ),
-                                                SizedBox(width: 5),
-                                                Text(
-                                                  '${movie.duration!}min',
-                                                  style: TextStyle(
-                                                      fontSize: 14.0,
-                                                      color:
-                                                          Colors.grey.shade600),
-                                                )
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.2,
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.play_circle_filled,
+                                        ),
+                                        Container(
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.access_time,
+                                                color: Colors.grey.shade600,
+                                                size: 20,
+                                              ),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                '${movie.duration!}min',
+                                                style: TextStyle(
+                                                  fontSize: 14.0,
                                                   color: Colors.grey.shade600,
-                                                  size: 20,
                                                 ),
-                                                SizedBox(width: 5),
-                                                Text(
-                                                  'Watch',
-                                                  style: TextStyle(
-                                                      fontSize: 14.0,
-                                                      color:
-                                                          Colors.grey.shade600),
-                                                )
-                                              ],
-                                            ),
+                                              )
+                                            ],
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                        Container(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.2,
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.play_circle_filled,
+                                                color: Colors.grey.shade600,
+                                                size: 20,
+                                              ),
+                                              SizedBox(width: 5),
+                                              Text(
+                                                'Watch',
+                                                style: TextStyle(
+                                                  fontSize: 14.0,
+                                                  color: Colors.grey.shade600,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ));
+                          ),
+                        ),
+                      );
                     },
                   );
                 }).toList(),

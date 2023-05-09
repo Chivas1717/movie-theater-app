@@ -17,7 +17,6 @@ class TicketsSummaryBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(movie.image!);
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.72,
       child: Container(
