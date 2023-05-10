@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_bloc.dart';
 import 'package:movie_theater_app/blocs/payment_bloc/payment_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_bloc.dart';

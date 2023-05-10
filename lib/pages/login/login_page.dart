@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                                       ),
                                     ),
                                     TextSpan(
-                                      text: ' ',
+                                      text: '  ',
                                       style: TextStyle(
                                         color: Color(0xfffc6c19),
                                       ),

@@ -59,6 +59,9 @@ class _MyHomePageState extends State<MyHomePage> {
   List<MovieModel> getTopMovies(List<MovieModel> movies) {
     final sorted = movies.toList()
       ..sort((b, a) => a.rating!.compareTo(b.rating!));
+    if (sorted.length < 3 && sorted.isNotEmpty) {
+      return sorted.toList().sublist(0, sorted.length);
+    }
     return sorted.toList().sublist(0, 3);
   }
 

@@ -111,14 +111,6 @@ class ChangeNamePage extends StatelessWidget {
                                     newNameController.text,
                                   ));
                                   Navigator.of(context).pop();
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) {
-                                  //       return const ProfilePage();
-                                  //     },
-                                  //   ),
-                                  // );
                                 }
                               },
                             ),
