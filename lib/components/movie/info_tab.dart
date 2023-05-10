@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_theater_app/components/movie/youtube_player.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../models/movie_model.dart';
 
@@ -26,21 +25,21 @@ class _InfoTabState extends State<InfoTab> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // const SizedBox(
-          //   height: 1,
-          // ),
-          // VideoPlayer(youtubeUrl: widget.movie.trailer!),
           const SizedBox(
             height: 1,
           ),
-          Container(
-            height: 200,
-            width: double.infinity,
-            decoration: const BoxDecoration(color: Colors.red),
-            child: const Center(
-              child: Text('Trailer player'),
-            ),
+          VideoPlayer(youtubeUrl: widget.movie.trailer!),
+          const SizedBox(
+            height: 1,
           ),
+          // Container(
+          //   height: 200,
+          //   width: double.infinity,
+          //   decoration: const BoxDecoration(color: Colors.red),
+          //   child: const Center(
+          //     child: Text('Trailer player'),
+          //   ),
+          // ),
           Container(
             height: 60,
             width: double.infinity,

@@ -60,13 +60,3 @@ class ConfirmTicketsButton extends StatelessWidget {
     );
   }
 }
-
-// CustomTextButton.gradient(
-//         width: double.infinity,
-//         onPressed: () {
-//           AppRouter.pushNamed(Routes.TicketSummaryScreenRoute);
-//         },
-//         disabled: theaterSeats == 0,
-//         gradient: Constants.buttonGradientOrange,
-//         child: 
-//       ),

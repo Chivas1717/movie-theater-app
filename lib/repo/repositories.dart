@@ -198,7 +198,7 @@ class ProfileRepository {
     var dio = Dio();
     String accessToken = await SecureStorage.getToken('token');
 
-    log(accessToken);
+    // log(accessToken);
 
     Response response = await dio.get(
       '$apiUrl/api/user',

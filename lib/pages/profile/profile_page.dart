@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_state.dart';
+import 'package:movie_theater_app/pages/profile/change_name_page.dart';
 
 import '../../components/profile/browse_moovies_button.dart';
 import '../../components/profile/user_profile_info.dart';
@@ -69,7 +70,14 @@ class _ProfilePageState extends State<ProfilePage> {
                           size: 30,
                         ),
                         onTap: () {
-                          // AppRouter.pushNamed(Routes.ChangePasswordScreenRoute);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ChangeNamePage();
+                              },
+                            ),
+                          );
                         },
                       )
                     ],

@@ -45,4 +45,11 @@ class FormValidator {
     if (expiry != null && creditCardExpiryRegex.hasMatch(expiry)) return null;
     return 'Please enter a valid expiry date';
   }
+
+  static String? newNameValidator(String? newName) {
+    if (newName!.isEmpty) {
+      return 'Please enter a new username';
+    }
+    return null;
+  }
 }

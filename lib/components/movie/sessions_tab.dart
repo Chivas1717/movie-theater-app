@@ -54,7 +54,25 @@ class _SessionsTabState extends State<SessionsTab> {
         );
   }
 
-  void getSessionPrices() {}
+  Map getSessionPrices(SessionModel session) {
+    var prices = {
+      'Normal': 0,
+      'Comfort': 0,
+      'VIP': 0,
+    };
+    for (var row in session.room!.rows!) {
+      for (var seat in row.seats!) {
+        if (seat.type == 0) {
+          prices['Normal'] = seat.price!;
+        } else if (seat.type == 1) {
+          prices['Comfort'] = seat.price!;
+        } else if (seat.type == 2) {
+          prices['VIP'] = seat.price!;
+        }
+      }
+    }
+    return prices;
+  }
 
   String convertDate(int date) {
     DateTime sessionDateTime = DateTime.fromMillisecondsSinceEpoch(date * 1000);
@@ -170,200 +188,208 @@ class _SessionsTabState extends State<SessionsTab> {
                     ],
                   ),
                 ),
-                Table(
-                  columnWidths: const {
-                    0: FlexColumnWidth(1.5),
-                    1: FlexColumnWidth(1),
-                    2: FlexColumnWidth(1),
-                    3: FlexColumnWidth(1),
-                    4: FlexColumnWidth(1.5),
-                  },
-                  defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                  children: [
-                    TableRow(
-                      decoration: const BoxDecoration(
-                        color: Color(0xff253454),
-                      ),
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          child: const Center(
-                            child: Text(
-                              'Time',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 106, 108, 116),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          child: const Center(
-                              child: Text(
-                            'Normal',
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 106, 108, 116),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          child: const Center(
-                            child: Text(
-                              'Comfort',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 106, 108, 116),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          child: const Center(
-                            child: Text(
-                              'VIP',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 106, 108, 116),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          child: const Center(
-                            child: Text(
-                              '',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 106, 108, 116),
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    for (var i = 0; i < sessions.length; i++)
+                SingleChildScrollView(
+                  child: Table(
+                    columnWidths: const {
+                      0: FlexColumnWidth(1.5),
+                      1: FlexColumnWidth(1),
+                      2: FlexColumnWidth(1),
+                      3: FlexColumnWidth(1),
+                      4: FlexColumnWidth(1.5),
+                    },
+                    defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                    children: [
                       TableRow(
                         decoration: const BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              width: .2,
-                              color: Color.fromARGB(255, 106, 108, 116),
-                            ),
-                          ),
+                          color: Color(0xff253454),
                         ),
                         children: [
                           Container(
-                            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-                            child: Column(
-                              children: [
-                                Text(
-                                  convertDate(sessions[i].date!),
-                                  style: const TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                Text(
-                                  sessions[i].type!,
-                                  style: const TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          Container(
+                            padding: const EdgeInsets.all(5),
                             child: const Center(
                               child: Text(
-                                '15',
+                                'Time',
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  color: Color.fromARGB(255, 106, 108, 116),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
                           Container(
+                            padding: const EdgeInsets.all(5),
+                            child: const Center(
+                                child: Text(
+                              'Normal',
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 106, 108, 116),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(5),
                             child: const Center(
                               child: Text(
-                                '15',
+                                'Comfort',
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  color: Color.fromARGB(255, 106, 108, 116),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
                           Container(
+                            padding: const EdgeInsets.all(5),
                             child: const Center(
                               child: Text(
-                                '15',
+                                'VIP',
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  color: Color.fromARGB(255, 106, 108, 116),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return TheaterPage(
-                                        session: sessions[i],
-                                        movie: widget.movie);
-                                  },
-                                ),
-                              );
-                            },
-                            child: Container(
-                              child: Center(
-                                child: Container(
-                                  height: 28,
-                                  margin:
-                                      const EdgeInsets.symmetric(horizontal: 5),
-                                  padding: const EdgeInsets.all(2),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    gradient: const LinearGradient(
-                                      begin: Alignment(0, -1),
-                                      end: Alignment(0, 1),
-                                      colors: <Color>[
-                                        Color(0xffff8036),
-                                        Color(0xfffc6c19)
-                                      ],
-                                      stops: <double>[0, 1],
-                                    ),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                        color: Color(0x3fff8036),
-                                        offset: Offset(0, 4),
-                                        blurRadius: 5,
-                                      ),
-                                    ],
-                                  ),
-                                  child: const Center(
-                                    child: Text(
-                                      'Preview',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ),
+                          Container(
+                            padding: const EdgeInsets.all(5),
+                            child: const Center(
+                              child: Text(
+                                '',
+                                style: TextStyle(
+                                  color: Color.fromARGB(255, 106, 108, 116),
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
                           ),
                         ],
                       ),
-                  ],
+                      for (var i = 0; i < sessions.length; i++)
+                        TableRow(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                width: .2,
+                                color: Color.fromARGB(255, 106, 108, 116),
+                              ),
+                            ),
+                          ),
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    convertDate(sessions[i].date!),
+                                    style: const TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
+                                  Text(
+                                    sessions[i].type!,
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: Center(
+                                child: Text(
+                                  getSessionPrices(sessions[i])['Normal'] == 0
+                                      ? '-'
+                                      : '${getSessionPrices(sessions[i])['Normal']}',
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              child: Center(
+                                child: Text(
+                                  getSessionPrices(sessions[i])['Comfort'] == 0
+                                      ? '-'
+                                      : '${getSessionPrices(sessions[i])['Comfort']}',
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              child: Center(
+                                child: Text(
+                                  getSessionPrices(sessions[i])['VIP'] == 0
+                                      ? '-'
+                                      : '${getSessionPrices(sessions[i])['VIP']}',
+                                  style: const TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return TheaterPage(
+                                          session: sessions[i],
+                                          movie: widget.movie);
+                                    },
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                child: Center(
+                                  child: Container(
+                                    height: 28,
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 5),
+                                    padding: const EdgeInsets.all(2),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      gradient: const LinearGradient(
+                                        begin: Alignment(0, -1),
+                                        end: Alignment(0, 1),
+                                        colors: <Color>[
+                                          Color(0xffff8036),
+                                          Color(0xfffc6c19)
+                                        ],
+                                        stops: <double>[0, 1],
+                                      ),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Color(0x3fff8036),
+                                          offset: Offset(0, 4),
+                                          blurRadius: 5,
+                                        ),
+                                      ],
+                                    ),
+                                    child: const Center(
+                                      child: Text(
+                                        'Preview',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                    ],
+                  ),
                 )
               ],
             ),

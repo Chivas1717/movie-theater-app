@@ -78,7 +78,7 @@ class SessionInfoBlock extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Theater',
+                'Room',
                 style: TextStyle(
                   fontSize: 13,
                   color: Color(0xFF949494),

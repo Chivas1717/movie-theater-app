@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoPlayer extends StatefulWidget {
-  VideoPlayer({super.key, required this.youtubeUrl});
-  String youtubeUrl;
+  const VideoPlayer({super.key, required this.youtubeUrl});
+  final String youtubeUrl;
 
   @override
   State<VideoPlayer> createState() => _VideoPlayerState();
@@ -21,30 +20,30 @@ class _VideoPlayerState extends State<VideoPlayer> {
     _controller = YoutubePlayerController(
       initialVideoId: videoId,
       flags: const YoutubePlayerFlags(
-        mute: false,
+        //   mute: false,
         autoPlay: false,
-        disableDragSeek: false,
-        loop: false,
-        isLive: false,
-        forceHD: false,
-        enableCaption: true,
+        //   disableDragSeek: false,
+        //   loop: false,
+        //   isLive: false,
+        //   forceHD: false,
+        //   enableCaption: true,
       ),
-    )..addListener(listener);
+    );
     super.initState();
   }
 
-  void listener() {
-    if (_isPlayerReady && mounted && !_controller.value.isFullScreen) {
-      setState(() {});
-    }
-  }
-
-  // @override
-  // void deactivate() {
-  //   // Pauses video while navigating to next page.
-  //   _controller.pause();
-  //   super.deactivate();
+  // void listener() {
+  //   if (_isPlayerReady && mounted && !_controller.value.isFullScreen) {
+  //     setState(() {});
+  //   }
   // }
+
+  @override
+  void deactivate() {
+    // Pauses video while navigating to next page.
+    _controller.pause();
+    super.deactivate();
+  }
 
   @override
   void dispose() {
@@ -55,7 +54,7 @@ class _VideoPlayerState extends State<VideoPlayer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 260,
       color: Colors.blue,
       child: YoutubePlayerBuilder(
         player: YoutubePlayer(
@@ -76,12 +75,12 @@ class _VideoPlayerState extends State<VideoPlayer> {
               ),
             ),
           ],
-          onReady: () {
-            _controller.addListener(listener);
-          },
+          // onReady: () {
+          //   _controller.addListener(listener);
+          // },
         ),
         builder: (context, player) => Container(
-          child: ListView(
+          child: Column(
             children: [
               player,
             ],

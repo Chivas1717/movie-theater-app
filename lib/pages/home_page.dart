@@ -280,6 +280,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                     Expanded(
                                       child: TextField(
+                                        style: TextStyle(color: Colors.white),
                                         readOnly: true,
                                         controller: dateController,
                                         decoration: const InputDecoration(

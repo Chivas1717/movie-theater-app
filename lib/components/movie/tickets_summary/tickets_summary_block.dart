@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_theater_app/components/movie/tickets_summary/dashed_ticket_separetor.dart';
 import 'package:movie_theater_app/components/movie/tickets_summary/session_info_block.dart';
@@ -42,54 +39,14 @@ class TicketsSummaryBlock extends StatelessWidget {
                 ),
               ),
             ),
-
-            // CachedNetworkImage(
-            //   imageUrl: movie.image!,
-            //   height: 255,
-            //   width: double.infinity,
-            //   imageBuilder: (ctx, imageProvider) => GestureDetector(
-            //     child: Container(
-            //       decoration: BoxDecoration(
-            //         image: DecorationImage(
-            //           image: imageProvider,
-            //           fit: BoxFit.cover,
-            //         ),
-            //         borderRadius: const BorderRadius.only(
-            //           topLeft: Radius.circular(10),
-            //           topRight: Radius.circular(10),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-
-            // CustomNetworkImage(
-            //   imageUrl: _selectedMovie.posterUrl,
-            //   height: 255,
-            //   fit: BoxFit.cover,
-            //   borderRadius: const BorderRadius.only(
-            //     topLeft: Radius.circular(10),
-            //     topRight: Radius.circular(10),
-            //   ),
-            //   placeholder: const MoviePosterPlaceholder(),
-            //   errorWidget: const MoviePosterPlaceholder(),
-            // ),
-
-            //Show details
             SessionInfoBlock(
               session: session,
               movie: movie,
             ),
-
-            // //Separator
             const DashedTicketSeparator(),
-
-            //Ticket details
             const Expanded(
               child: TicketsBlock(),
             ),
-
-            //Expand icon
             Container(
               width: double.infinity,
               decoration: const BoxDecoration(

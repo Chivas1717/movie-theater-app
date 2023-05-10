@@ -5,7 +5,7 @@ import '../../../blocs/tickets_bloc/tickets_bloc.dart';
 import '../../../blocs/tickets_bloc/tickets_state.dart';
 
 class TicketsBlock extends StatelessWidget {
-  const TicketsBlock();
+  const TicketsBlock({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class TicketsBlock extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Price',
                       style: TextStyle(
                         fontSize: 13,
@@ -69,7 +69,7 @@ class TicketsBlock extends StatelessWidget {
                     ),
                     Text(
                       '${state.selectedSeats[i].seat.price} UAH',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,

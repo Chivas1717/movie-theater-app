@@ -46,12 +46,13 @@ class _SeatsAreaState extends State<SeatsArea> {
   }
 
   Color getColor(Seat seat) {
+    if (!seat.isAvailable!) return Color(0xFF5A5A5A);
     if (widget.selectedSeats.any((item) => item.seat == seat))
       return Colors.red;
-    if (seat.isAvailable!)
-      return Colors.white;
-    else
-      return Color(0xFF5A5A5A);
+    if (seat.isAvailable! && seat.type == 1) return Colors.yellow[200]!;
+    if (seat.isAvailable! && seat.type == 2) return Colors.yellow[600]!;
+
+    return Colors.white;
   }
 
   void toggleSelection(SelectedSeat selectedSeat) {
@@ -106,13 +107,7 @@ class _SeatsAreaState extends State<SeatsArea> {
                   height:
                       widget.maxGridHeight * widget.numOfRows / widget.maxRows -
                           5,
-                  child:
-                      // ListView.builder(
-                      //   scrollDirection: Axis.horizontal,
-                      //   itemCount: 1,
-                      //   itemBuilder: (_, index) {
-                      //     return
-                      Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       for (var i = 0;
@@ -154,40 +149,7 @@ class _SeatsAreaState extends State<SeatsArea> {
                         ),
                     ],
                   ),
-                  //   },
-                  // ),
                 ),
-
-                // GridView.builder(
-                //   itemCount: numOfRows * seatsPerRow,
-                //   scrollDirection: Axis.horizontal,
-                //   padding: const EdgeInsets.only(right: 20),
-                //   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                //     maxCrossAxisExtent: seatSize,
-                //     crossAxisSpacing: seatGap,
-                //     mainAxisSpacing: seatGap,
-                //   ),
-                //   itemBuilder: (context, i) {
-                //     var currentRow = i ~/ seatsPerRow + 1;
-                //     final seat = SeatModel(
-                //       seatRow: String.fromCharCode(i % numOfRows + 65),
-                //       seatNumber: i ~/ numOfRows,
-                //     );
-                //     if (isMissing(seat)) {
-                //       return const SizedBox.shrink();
-                //     } else if (isBlocked(seat) || isBooked(seat)) {
-                //       return const DecoratedBox(
-                //         decoration: BoxDecoration(
-                //           color: Color(0xFF5A5A5A),
-                //           borderRadius: BorderRadius.all(
-                //             Radius.circular(8),
-                //           ),
-                //         ),
-                //       );
-                //     }
-                //     return SeatWidget(seat: seat);
-                //   },
-                // ),
               ),
             ),
           ),
