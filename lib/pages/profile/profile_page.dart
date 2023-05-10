@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_state.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 import 'package:movie_theater_app/pages/profile/change_name_page.dart';
 
 import '../../components/profile/browse_moovies_button.dart';
@@ -83,9 +85,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  const Text(
-                    'Welcome',
-                    style: TextStyle(
+                  Text(
+                    LocaleKeys.Welcome.tr(),
+                    style: const TextStyle(
                       color: Color(0xFFf03400),
                       fontSize: 45,
                       fontWeight: FontWeight.w700,

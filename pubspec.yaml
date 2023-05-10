@@ -47,6 +47,8 @@ dependencies:
   carousel_slider: ^4.2.1
   cached_network_image: ^3.2.3
   easy_localization: ^3.0.1
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +75,7 @@ flutter:
   assets:
     - assets/
     - assets/imgs/
+    - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

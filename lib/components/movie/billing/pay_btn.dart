@@ -1,8 +1,10 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/payment_bloc/payment_event.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 import 'package:movie_theater_app/models/movie_model.dart';
 import 'package:movie_theater_app/models/session_model.dart';
 import 'package:movie_theater_app/pages/movie/result_page.dart';
@@ -73,9 +75,9 @@ class PayButton extends StatelessWidget {
                   colors: [Color(0xFFf03400), Color(0xFFf04f00)],
                 ),
               ),
-              child: const Center(
+              child: Center(
                 child: Text(
-                  'Pay',
+                  LocaleKeys.Pay.tr(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 15,

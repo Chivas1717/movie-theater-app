@@ -1,0 +1,128 @@
+// DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
+
+// ignore_for_file: prefer_single_quotes
+
+import 'dart:ui';
+
+import 'package:easy_localization/easy_localization.dart' show AssetLoader;
+
+class CodegenLoader extends AssetLoader{
+  const CodegenLoader();
+
+  @override
+  Future<Map<String, dynamic>> load(String fullPath, Locale locale ) {
+    return Future.value(mapLocales[locale.toString()]);
+  }
+
+  static const Map<String,dynamic> en = {
+  "Search": "Search...",
+  "Now_in_cinemas": "Now in cinemas...",
+  "Select_date": "Select date...",
+  "Browse_more": "↓ Browse more ↓",
+  "Profile": "Profile",
+  "Welcome": "Welcome",
+  "Full_name": "Full Name",
+  "Contact": "Contact",
+  "View_your_tickets": "VIEW YOUR TICKETS",
+  "Browse_movies": "BROWSE MOVIES",
+  "Change_your_name": "Change your name",
+  "New_username": "New username",
+  "Enter_new_username": "Enter new username",
+  "Confirm": "Confirm",
+  "Your_bookings": "Your bookings",
+  "Seat": "Seat",
+  "Room": "Room",
+  "Seat_status": "Seat Status",
+  "Confirmed": "Confirmed",
+  "About": "About",
+  "Sessions": "Sessions",
+  "RUNTIME": "RUNTIME",
+  "Certificate": "Certificate",
+  "Release": "Release",
+  "Genre": "Genre",
+  "Director": "Director",
+  "Cast": "Cast",
+  "Time": "Time",
+  "Normal": "Normal",
+  "Comfort": "Comfort",
+  "Preview": "Preview",
+  "Taken": "Taken",
+  "Selected": "Selected",
+  "Purchase_num_seats": "PURCHASE - {} SEATS",
+  "Date": "Date",
+  "Price": "Price",
+  "UAH": "UAH",
+  "Payment_checkout": "Payment checkout",
+  "Billing_details": "Billing details",
+  "Qty": "Qty",
+  "TIcket_type": "Ticket Type",
+  "Total": "Total - {} UAH",
+  "Credit_card_number": "Credit Card Number",
+  "Expiry_date": "Expiry Date (MM/YY)",
+  "Pay": "Pay",
+  "Your_tickets_have_been_purchased": "Your tickets have been purchased!",
+  "Make_more_bookings": "Make more bookings",
+  "We_will_send_you_a": "We will send you a",
+  "One_Time_Password": "One Time Password",
+  "On_this_mobile_number": "on this mobile number",
+  "Next": "Next",
+  "Waiting_for_the_code": "Waiting for the code",
+  "Watch": "Watch"
+};
+static const Map<String,dynamic> uk = {
+  "Search": "Пошук...",
+  "Now_in_cinemas": "Зараз у кінотеатрах...",
+  "Select_date": "Оберіть дату...",
+  "Browse_more": "↓ Переглянути більше ↓",
+  "Profile": "Профіль",
+  "Welcome": "Ласкаво просимо",
+  "Full_name": "Повне ім'я",
+  "Contact": "Контакт",
+  "View_your_tickets": "ПЕРЕГЛЯНУТИ СВОЇ КВИТКИ",
+  "Browse_movies": "ОГЛЯД ФІЛЬМІВ",
+  "Change_your_name": "Змінити своє ім'я",
+  "New_username": "Нове ім'я користувача",
+  "Enter_new_username": "Введіть нове ім'я користувача",
+  "Confirm": "Підтвердити",
+  "Your_bookings": "Ваші бронювання",
+  "Seat": "Місце",
+  "Room": "Зал",
+  "Seat_status": "Статус місця",
+  "Confirmed": "Підтверджено",
+  "About": "Про фільм",
+  "Sessions": "Сеанси",
+  "RUNTIME": "Тривалість",
+  "Certificate": "Сертифікат",
+  "Release": "Дата виходу",
+  "Genre": "Жанр",
+  "Director": "Режисер",
+  "Cast": "Актори",
+  "Time": "Час",
+  "Normal": "Звичайний",
+  "Comfort": "Комфорт",
+  "Preview": "Перегляд",
+  "Taken": "Зайнято",
+  "Selected": "Вибрано",
+  "Purchase_num_seats": "ПРИДБАТИ - {} МІСЦЬ",
+  "Date": "Дата",
+  "Price": "Ціна",
+  "UAH": "грн",
+  "Payment_checkout": "Оплата",
+  "Billing_details": "Деталі платежу",
+  "Qty": "Кількість",
+  "TIcket_type": "Тип квитка",
+  "Total": "Разом - {} грн",
+  "Credit_card_number": "Номер кредитної карти",
+  "Expiry_date": "Термін дії (MM/YY)",
+  "Pay": "Оплатити",
+  "Your_tickets_have_been_purchased": "Ваші квитки були придбані!",
+  "Make_more_bookings": "Зробити ще бронювання",
+  "We_will_send_you_a": "Ми відправимо вам",
+  "One_Time_Password": "Одноразовий пароль",
+  "On_this_mobile_number": "на цей номер телефону",
+  "Next": "Далі",
+  "Waiting_for_the_code": "Чекаємо код...",
+  "Watch": "Дивитись"
+};
+static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "uk": uk};
+}

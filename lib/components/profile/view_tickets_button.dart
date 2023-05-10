@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/purchased_tickets_bloc/purchased_tickets_bloc.dart';
 import 'package:movie_theater_app/blocs/purchased_tickets_bloc/purchased_tickets_event.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 
 import '../../pages/profile/purchased_tickets_page.dart';
 
@@ -33,9 +35,9 @@ class ViewTicketsButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: const Color(0xFFf03400), width: 4),
           ),
-          child: const Center(
+          child: Center(
             child: Text(
-              'VIEW YOUR TICKETS',
+              LocaleKeys.View_your_tickets.tr(),
               style: TextStyle(
                 color: Color(0xFFf03400),
                 fontSize: 15,

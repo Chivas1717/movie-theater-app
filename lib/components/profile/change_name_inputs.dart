@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../../generated/locale_keys.g.dart';
 import '../../utils/form_validator.dart';
 import '../movie/billing/credentials_input_block.dart';
 
@@ -18,8 +20,8 @@ class ChangeNameInputs extends StatelessWidget {
       children: [
         //Current Password Field
         CustomTextField(
-          hintText: 'Enter new username',
-          floatingText: 'New username',
+          hintText: LocaleKeys.Enter_new_username.tr(),
+          floatingText: LocaleKeys.New_username.tr(),
           controller: newNameController,
           keyboardType: TextInputType.name,
           textInputAction: TextInputAction.next,

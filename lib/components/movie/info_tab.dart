@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_theater_app/components/movie/youtube_player.dart';
 
+import '../../generated/locale_keys.g.dart';
 import '../../models/movie_model.dart';
 
 class InfoTab extends StatefulWidget {
@@ -82,8 +84,8 @@ class _InfoTabState extends State<InfoTab> {
                             fontSize: 18,
                           ),
                         ),
-                        const Text(
-                          'RUNTIME',
+                        Text(
+                          LocaleKeys.RUNTIME.tr(),
                           style: TextStyle(
                             color: Colors.grey,
                             fontWeight: FontWeight.w500,
@@ -113,8 +115,8 @@ class _InfoTabState extends State<InfoTab> {
                 Table(
                   children: [
                     TableRow(children: [
-                      const Text(
-                        "Certificate",
+                      Text(
+                        LocaleKeys.Certificate.tr(),
                         style: TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.w500,
@@ -131,8 +133,8 @@ class _InfoTabState extends State<InfoTab> {
                     ]),
                     rowSpacer,
                     TableRow(children: [
-                      const Text(
-                        "Release",
+                      Text(
+                        LocaleKeys.Release.tr(),
                         style: TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.w500,
@@ -150,8 +152,8 @@ class _InfoTabState extends State<InfoTab> {
                     rowSpacer,
                     TableRow(
                       children: [
-                        const Text(
-                          "Genre",
+                        Text(
+                          LocaleKeys.Genre.tr(),
                           style: TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.w500,
@@ -169,8 +171,8 @@ class _InfoTabState extends State<InfoTab> {
                     ),
                     rowSpacer,
                     TableRow(children: [
-                      const Text(
-                        "Director",
+                      Text(
+                        LocaleKeys.Director.tr(),
                         style: TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.w500,
@@ -188,7 +190,7 @@ class _InfoTabState extends State<InfoTab> {
                     rowSpacer,
                     TableRow(children: [
                       Text(
-                        "Cast",
+                        LocaleKeys.Cast.tr(),
                         style: TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.w500,

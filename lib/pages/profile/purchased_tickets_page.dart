@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/purchased_tickets_bloc/purchased_tickets_bloc.dart';
 import 'package:movie_theater_app/blocs/purchased_tickets_bloc/purchased_tickets_state.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 
 import '../../components/profile/user_tickets_block.dart';
 
@@ -55,13 +57,13 @@ class PurchasedTicketsPage extends StatelessWidget {
                         },
                       ),
                       const SizedBox(width: 20),
-                      const Expanded(
+                      Expanded(
                         child: Text(
-                          'Your bookings',
+                          LocaleKeys.Your_bookings.tr(),
                           maxLines: 1,
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 26, fontWeight: FontWeight.w700),
                         ),
                       ),

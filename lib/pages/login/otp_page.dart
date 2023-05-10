@@ -1,11 +1,13 @@
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:movie_theater_app/blocs/auth_bloc/auth_event.dart';
 import 'package:movie_theater_app/blocs/auth_bloc/auth_state.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 import 'package:movie_theater_app/pages/home_page.dart';
 import 'package:numeric_keyboard/numeric_keyboard.dart';
 
@@ -120,10 +122,12 @@ class _OtpPageState extends State<OtpPage> {
                                                 color: Colors.grey.shade200
                                                     .withOpacity(0.5),
                                               ),
-                                              child: const Center(
+                                              child: Center(
                                                 child: Text(
-                                                  'Waiting for the code...',
-                                                  style: TextStyle(
+                                                  LocaleKeys
+                                                          .Waiting_for_the_code
+                                                      .tr(),
+                                                  style: const TextStyle(
                                                     color: Color(0xfffc6c19),
                                                     fontSize: 20,
                                                     fontWeight: FontWeight.w800,
@@ -182,7 +186,7 @@ class _OtpPageState extends State<OtpPage> {
                                             behavior: SnackBarBehavior.floating,
                                             backgroundColor: Colors.red,
                                             content: Text(
-                                              'Please enter a phone number',
+                                              'Please enter 4 digit code',
                                               style: TextStyle(
                                                   color: Colors.white),
                                             ),
@@ -202,10 +206,10 @@ class _OtpPageState extends State<OtpPage> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: <Widget>[
-                                          const Text(
-                                            'Confirm',
-                                            style:
-                                                TextStyle(color: Colors.white),
+                                          Text(
+                                            LocaleKeys.Confirm.tr(),
+                                            style: const TextStyle(
+                                                color: Colors.white),
                                           ),
                                           Container(
                                             padding: const EdgeInsets.all(8),

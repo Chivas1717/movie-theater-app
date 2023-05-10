@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +8,7 @@ import 'package:movie_theater_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:movie_theater_app/blocs/auth_bloc/auth_state.dart';
 
 import '../../blocs/auth_bloc/auth_event.dart';
+import '../../generated/locale_keys.g.dart';
 import 'otp_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -110,23 +112,36 @@ class _LoginPageState extends State<LoginPage> {
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: RichText(
                                 textAlign: TextAlign.center,
-                                text: const TextSpan(
+                                text: TextSpan(
                                   children: <TextSpan>[
                                     TextSpan(
-                                      text: 'We will send you an ',
+                                      text: LocaleKeys.We_will_send_you_a.tr(),
                                       style: TextStyle(
                                         color: Color(0xfffc6c19),
                                       ),
                                     ),
                                     TextSpan(
-                                      text: 'One Time Password ',
+                                      text: ' ',
+                                      style: TextStyle(
+                                        color: Color(0xfffc6c19),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: LocaleKeys.One_Time_Password.tr(),
                                       style: TextStyle(
                                         color: Color(0xfffc6c19),
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     TextSpan(
-                                      text: 'on this mobile number',
+                                      text: ' ',
+                                      style: TextStyle(
+                                        color: Color(0xfffc6c19),
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text:
+                                          LocaleKeys.On_this_mobile_number.tr(),
                                       style: TextStyle(
                                         color: Color(0xfffc6c19),
                                       ),
@@ -167,6 +182,11 @@ class _LoginPageState extends State<LoginPage> {
                               child: ElevatedButton(
                                 onPressed: () {
                                   if (phoneController.text.isNotEmpty) {
+                                    // if (context.locale == Locale('en')) {
+                                    //   context.setLocale(Locale('uk'));
+                                    // } else {
+                                    //   context.setLocale(Locale('en'));
+                                    // }
                                     BlocProvider.of<AuthBloc>(context).add(
                                       RequestOtpAuthEvent(phoneController.text),
                                     );
@@ -206,8 +226,8 @@ class _LoginPageState extends State<LoginPage> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
-                                      const Text(
-                                        'Next',
+                                      Text(
+                                        LocaleKeys.Next.tr(),
                                         style: TextStyle(color: Colors.white),
                                       ),
                                       Container(

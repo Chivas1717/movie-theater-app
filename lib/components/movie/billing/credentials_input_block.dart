@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 
 import '../../../utils/form_validator.dart';
 
@@ -77,7 +79,7 @@ class _CardDetailFields extends StatelessWidget {
         //Credit Card Number
         CustomTextField(
           controller: creditCardNumberController,
-          floatingText: 'Credit Card Number',
+          floatingText: LocaleKeys.Credit_card_number.tr(),
           hintText: 'Enter credit card number',
           maxLength: 16,
           keyboardType: TextInputType.number,
@@ -103,7 +105,7 @@ class _CardDetailFields extends StatelessWidget {
         //Credit Card Expiry Date
         CustomTextField(
           controller: creditCardExpiryController,
-          floatingText: 'Expiry Date (MM/YYYY)',
+          floatingText: LocaleKeys.Expiry_date.tr(),
           hintText: 'Enter expiry date',
           keyboardType: TextInputType.datetime,
           textInputAction: TextInputAction.done,

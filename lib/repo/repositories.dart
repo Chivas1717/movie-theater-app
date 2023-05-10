@@ -15,10 +15,14 @@ class AuthRepository {
 
   Future<bool> requestOtp(String phoneNumber) async {
     var dio = Dio();
+    String language = await SecureStorage.getLang();
+    language = language.isEmpty ? 'en' : language;
+
     Response response = await dio.post(
       '$apiUrl/api/auth/otp',
       options: Options(headers: {
         HttpHeaders.contentTypeHeader: "application/json",
+        'Accept-Language': language,
       }),
       data: {
         "phoneNumber": phoneNumber,
@@ -35,6 +39,8 @@ class AuthRepository {
 
   Future<String> getAcessToken(phoneNumber, otp) async {
     var dio = Dio();
+    String language = await SecureStorage.getLang();
+    language = language.isEmpty ? 'en' : language;
 
     Response response = await dio.post(
       '$apiUrl/api/auth/login',
@@ -42,6 +48,10 @@ class AuthRepository {
         "phoneNumber": phoneNumber,
         "otp": "0000",
       },
+      options: Options(headers: {
+        HttpHeaders.contentTypeHeader: "application/json",
+        'Accept-Language': language,
+      }),
     );
 
     if (response.statusCode == 200) {
@@ -58,8 +68,10 @@ class MoviesRepository {
   String apiUrl = 'https://fs-mt.qwerty123.tech';
 
   Future<List<MovieModel>> getMovies(searchValue, dateValue) async {
-    log(searchValue);
     var dio = Dio();
+    String accessToken = await SecureStorage.getToken('token');
+    String language = await SecureStorage.getLang();
+    language = language.isEmpty ? 'en' : language;
     String date;
     String search;
 
@@ -72,12 +84,13 @@ class MoviesRepository {
 
     search = searchValue.isNotEmpty ? '&query=$searchValue' : '';
 
-    String accessToken = await SecureStorage.getToken('token');
-
     Response response = await dio.get(
       '$apiUrl/api/movies?date=$date$search',
       options: Options(
-        headers: {'Authorization': 'Bearer $accessToken'},
+        headers: {
+          'Authorization': 'Bearer $accessToken',
+          'Accept-Language': language,
+        },
       ),
     );
 
@@ -95,6 +108,8 @@ class SessionsRepository {
 
   Future<List<SessionModel>> getSessions(movieId, dateValue) async {
     var dio = Dio();
+    String language = await SecureStorage.getLang();
+    language = language.isEmpty ? 'en' : language;
     String date;
 
     if (dateValue.isNotEmpty) {
@@ -110,7 +125,10 @@ class SessionsRepository {
     Response response = await dio.get(
       '$apiUrl/api/movies/sessions?movieId=$movieId&date=$date',
       options: Options(
-        headers: {'Authorization': 'Bearer $accessToken'},
+        headers: {
+          'Authorization': 'Bearer $accessToken',
+          'Accept-Language': language,
+        },
       ),
     );
 
@@ -132,6 +150,8 @@ class PaymentRepository {
   ) async {
     var dio = Dio();
 
+    String language = await SecureStorage.getLang();
+    language = language.isEmpty ? 'en' : language;
     String accessToken = await SecureStorage.getToken('token');
     List<int> selectedSeatsIds = selectedSeats.map((e) => e.seat.id!).toList();
 
@@ -143,6 +163,7 @@ class PaymentRepository {
       },
       options: Options(headers: {
         'Authorization': 'Bearer $accessToken',
+        'Accept-Language': language,
       }),
     );
 
@@ -164,6 +185,8 @@ class PaymentRepository {
   ) async {
     var dio = Dio();
 
+    String language = await SecureStorage.getLang();
+    language = language.isEmpty ? 'en' : language;
     String accessToken = await SecureStorage.getToken('token');
     List<int> selectedSeatsIds = selectedSeats.map((e) => e.seat.id!).toList();
 
@@ -179,6 +202,7 @@ class PaymentRepository {
       },
       options: Options(headers: {
         'Authorization': 'Bearer $accessToken',
+        'Accept-Language': language,
       }),
     );
 
@@ -196,6 +220,9 @@ class ProfileRepository {
 
   Future<ProfileModel> getProfileInfo() async {
     var dio = Dio();
+
+    String language = await SecureStorage.getLang();
+    language = language.isEmpty ? 'en' : language;
     String accessToken = await SecureStorage.getToken('token');
 
     // log(accessToken);
@@ -204,6 +231,7 @@ class ProfileRepository {
       '$apiUrl/api/user',
       options: Options(headers: {
         'Authorization': 'Bearer $accessToken',
+        'Accept-Language': language,
       }),
     );
 
@@ -217,11 +245,15 @@ class ProfileRepository {
 
   Future<ProfileModel> updateProfileInfo(String newName) async {
     var dio = Dio();
+
+    String language = await SecureStorage.getLang();
+    language = language.isEmpty ? 'en' : language;
     String accessToken = await SecureStorage.getToken('token');
 
     Response response = await dio.post('$apiUrl/api/user',
         options: Options(headers: {
           "Authorization": 'Bearer $accessToken',
+          'Accept-Language': language,
         }),
         data: {
           "name": newName,
@@ -241,12 +273,16 @@ class PurchasedTicketsRepository {
 
   Future<List<PurchasedTicketModel>> getPurchasedTickets() async {
     var dio = Dio();
+
+    String language = await SecureStorage.getLang();
+    language = language.isEmpty ? 'en' : language;
     String accessToken = await SecureStorage.getToken('token');
 
     Response response = await dio.get(
       '$apiUrl/api/user/tickets',
       options: Options(headers: {
         'Authorization': 'Bearer $accessToken',
+        'Accept-Language': language,
       }),
     );
 

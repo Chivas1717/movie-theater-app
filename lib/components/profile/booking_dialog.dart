@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 import 'package:movie_theater_app/models/purchased_ticket_model.dart';
 
 class BookingDialog extends StatelessWidget {
@@ -44,13 +46,13 @@ class BookingDialog extends StatelessWidget {
                     children: [
                       //Column Labels
                       Row(
-                        children: const [
+                        children: [
                           //Seat label
                           SizedBox(
                             width: 50,
                             child: Text(
-                              'Seat',
-                              style: TextStyle(
+                              LocaleKeys.Seat.tr(),
+                              style: const TextStyle(
                                 color: Color(0xFFf2f2f2),
                               ),
                             ),
@@ -59,7 +61,7 @@ class BookingDialog extends StatelessWidget {
                           //Price label
                           Expanded(
                             child: Text(
-                              'Room',
+                              LocaleKeys.Room.tr(),
                               style: TextStyle(
                                 color: Color(0xFFf2f2f2),
                               ),
@@ -70,7 +72,7 @@ class BookingDialog extends StatelessWidget {
                           SizedBox(
                             width: 100,
                             child: Text(
-                              'Seat Status',
+                              LocaleKeys.Seat_status.tr(),
                               style: TextStyle(
                                 color: Color(0xFFf2f2f2),
                               ),
@@ -162,11 +164,15 @@ class _BookingSeatsListItem extends StatelessWidget {
           child: Row(
             children: [
               //Booking Status value
-              Text(
-                'Confirmed',
-                style: const TextStyle(
-                  color: Color(0xFF949494),
-                  fontSize: 13,
+              Container(
+                width: 70,
+                child: Text(
+                  LocaleKeys.Confirmed.tr(),
+                  style: const TextStyle(
+                    overflow: TextOverflow.ellipsis,
+                    color: Color(0xFF949494),
+                    fontSize: 13,
+                  ),
                 ),
               ),
 

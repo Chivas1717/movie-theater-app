@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/components/movie/tickets_summary/dashed_ticket_separetor.dart';
 import '../../../blocs/tickets_bloc/tickets_bloc.dart';
 import '../../../blocs/tickets_bloc/tickets_state.dart';
+import '../../../generated/locale_keys.g.dart';
 
 class TicketsBlock extends StatelessWidget {
   const TicketsBlock({super.key});
@@ -38,8 +40,8 @@ class TicketsBlock extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Seat',
+                    Text(
+                      LocaleKeys.Seat.tr(),
                       style: TextStyle(
                         fontSize: 13,
                         color: Color(0xFF949494),
@@ -60,8 +62,8 @@ class TicketsBlock extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Price',
+                    Text(
+                      LocaleKeys.Price.tr(),
                       style: TextStyle(
                         fontSize: 13,
                         color: Color(0xFF949494),

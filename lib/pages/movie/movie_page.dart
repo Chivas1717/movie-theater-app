@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:movie_theater_app/components/movie/info_tab.dart';
 import 'package:movie_theater_app/components/movie/sessions_tab.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 import 'package:movie_theater_app/models/movie_model.dart';
 
 class MoviePage extends StatefulWidget {
@@ -65,12 +67,12 @@ class _MoviePageState extends State<MoviePage> with TickerProviderStateMixin {
               fontSize: 16,
               color: Color.fromARGB(255, 106, 108, 116),
             ),
-            tabs: const [
+            tabs: [
               Tab(
-                text: 'About',
+                text: LocaleKeys.About.tr(),
               ),
               Tab(
-                text: 'Sessions',
+                text: LocaleKeys.Sessions.tr(),
               )
             ],
           ),
@@ -97,8 +99,9 @@ class _MoviePageState extends State<MoviePage> with TickerProviderStateMixin {
                   shape: CircleBorder(),
                   elevation: 0.0,
                   child: Text(
-                    'Sessions',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                    LocaleKeys.Sessions.tr(),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 22),
                   ),
                   onPressed: () {
                     _controller.animateTo(_selectedIndex += 1);
@@ -107,12 +110,6 @@ class _MoviePageState extends State<MoviePage> with TickerProviderStateMixin {
               )
             : null,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        // floatingActionButton: FloatingActionButton(
-        //   child: Icon(Icons.abc),
-        //   onPressed: () {
-        //     _controller.animateTo(1);
-        //   },
-        // ),
       ),
     );
   }

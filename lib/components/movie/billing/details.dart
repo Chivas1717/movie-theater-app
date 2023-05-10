@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 
 import '../../../blocs/tickets_bloc/tickets_bloc.dart';
 import '../../../blocs/tickets_bloc/tickets_state.dart';
@@ -60,8 +62,8 @@ class Details extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //Billing Details Label
-              const Text(
-                'Billing Details',
+              Text(
+                LocaleKeys.Billing_details.tr(),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 23,
@@ -73,11 +75,11 @@ class Details extends StatelessWidget {
 
               //Billing Summary Labels
               Row(
-                children: const [
+                children: [
                   SizedBox(
-                    width: 40,
+                    width: 80,
                     child: Text(
-                      'Qty',
+                      LocaleKeys.Qty.tr(),
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
@@ -88,7 +90,7 @@ class Details extends StatelessWidget {
                   ),
                   SizedBox(width: 10),
                   Text(
-                    'Ticket Type',
+                    LocaleKeys.TIcket_type.tr(),
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -97,7 +99,7 @@ class Details extends StatelessWidget {
                   ),
                   Spacer(),
                   Text(
-                    'Price',
+                    LocaleKeys.Price.tr(),
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -118,7 +120,7 @@ class Details extends StatelessWidget {
                       children: [
                         //Num of tickets
                         SizedBox(
-                            width: 40,
+                            width: 80,
                             child: Text(
                               '${categorisedSeats['Normal']!.length}',
                               textAlign: TextAlign.center,
@@ -157,7 +159,7 @@ class Details extends StatelessWidget {
                       children: [
                         //Num of tickets
                         SizedBox(
-                            width: 40,
+                            width: 80,
                             child: Text(
                               '${categorisedSeats['Comfort']!.length}',
                               textAlign: TextAlign.center,
@@ -196,7 +198,7 @@ class Details extends StatelessWidget {
                       children: [
                         //Num of tickets
                         SizedBox(
-                            width: 40,
+                            width: 80,
                             child: Text(
                               '${categorisedSeats['VIP']!.length}',
                               textAlign: TextAlign.center,
@@ -236,7 +238,8 @@ class Details extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    'Total - ${getTotalPrice(state.selectedSeats)} UAH',
+                    LocaleKeys.Total.tr(
+                        args: ['${getTotalPrice(state.selectedSeats)}']),
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

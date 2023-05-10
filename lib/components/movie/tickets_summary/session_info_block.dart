@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 
 import '../../../models/movie_model.dart';
 import '../../../models/session_model.dart';
@@ -31,9 +33,9 @@ class SessionInfoBlock extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Date',
-                style: TextStyle(
+              Text(
+                LocaleKeys.Date.tr(),
+                style: const TextStyle(
                   fontSize: 13,
                   color: Color(0xFF949494),
                 ),
@@ -55,8 +57,8 @@ class SessionInfoBlock extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Time',
+              Text(
+                LocaleKeys.Time.tr(),
                 style: TextStyle(
                   fontSize: 13,
                   color: Color(0xFF949494),
@@ -77,8 +79,8 @@ class SessionInfoBlock extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Room',
+              Text(
+                LocaleKeys.Room.tr(),
                 style: TextStyle(
                   fontSize: 13,
                   color: Color(0xFF949494),

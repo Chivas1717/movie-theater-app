@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/payment_bloc/payment_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:movie_theater_app/pages/movie/tickets_summary_page.dart';
 
 import '../../../blocs/tickets_bloc/tickets_bloc.dart';
 import '../../../blocs/tickets_bloc/tickets_state.dart';
+import '../../../generated/locale_keys.g.dart';
 
 class PurchaseSeatsButton extends StatelessWidget {
   final SessionModel session;
@@ -56,7 +58,8 @@ class PurchaseSeatsButton extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'PURCHASE - ${ticketsState.selectedSeats.length} SEATS',
+                  LocaleKeys.Purchase_num_seats.tr(
+                      args: ['${ticketsState.selectedSeats.length}']),
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15,

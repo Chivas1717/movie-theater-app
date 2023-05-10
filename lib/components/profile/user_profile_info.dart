@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_state.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 
 class UserProfileInfo extends StatelessWidget {
   const UserProfileInfo({super.key});
@@ -17,7 +19,7 @@ class UserProfileInfo extends StatelessWidget {
                 children: [
                   //Full Name Label
                   Text(
-                    'Full Name',
+                    LocaleKeys.Full_name.tr(),
                     style: TextStyle(
                         color: Color(0xFFf03400),
                         fontSize: 26,
@@ -37,7 +39,7 @@ class UserProfileInfo extends StatelessWidget {
 
                   //Contact Label
                   Text(
-                    'Contact',
+                    LocaleKeys.Contact.tr(),
                     style: TextStyle(
                         color: Color(0xFFf03400),
                         fontSize: 26,

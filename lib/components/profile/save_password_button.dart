@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 
 class SavePasswordButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -19,9 +21,9 @@ class SavePasswordButton extends StatelessWidget {
               colors: [Color(0xFFf03400), Color(0xFFf04f00)],
             ),
           ),
-          child: const Center(
+          child: Center(
             child: Text(
-              'CONFIRM',
+              LocaleKeys.Confirm.tr(),
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 15,

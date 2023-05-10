@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_theater_app/pages/home_page.dart';
+
+import '../../../generated/locale_keys.g.dart';
 
 class MoreBookingsButton extends StatelessWidget {
   const MoreBookingsButton({super.key});
@@ -26,9 +29,9 @@ class MoreBookingsButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             color: Colors.white,
           ),
-          child: const Center(
+          child: Center(
             child: Text(
-              'Make more bookings',
+              LocaleKeys.Make_more_bookings.tr(),
               style: TextStyle(
                 color: Color(0xFFf03400),
                 fontSize: 20,

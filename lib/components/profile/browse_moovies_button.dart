@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 import 'package:movie_theater_app/pages/home_page.dart';
 
 class BrowseMoviesButton extends StatelessWidget {
@@ -26,10 +28,10 @@ class BrowseMoviesButton extends StatelessWidget {
             colors: [Color(0xFFf03400), Color(0xFFf04f00)],
           ),
         ),
-        child: const Center(
+        child: Center(
           child: Text(
-            'BROWSE MOVIES',
-            style: TextStyle(
+            LocaleKeys.Browse_movies.tr(),
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 15,
               letterSpacing: 0.7,

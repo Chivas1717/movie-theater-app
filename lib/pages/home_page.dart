@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_bloc.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_event.dart';
 import 'package:movie_theater_app/blocs/movies_bloc/movies_state.dart';
@@ -11,6 +11,8 @@ import 'package:movie_theater_app/models/movie_model.dart';
 
 import '../blocs/auth_bloc/auth_bloc.dart';
 import '../blocs/auth_bloc/auth_state.dart';
+import '../generated/locale_keys.g.dart';
+import '../utils/secure_storage.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -76,18 +78,18 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         );
 
-    //to be fixed: on 2nd render scroll to browse part
-    if (!isFirstRender) {
-      scrollController.animateTo(
-        670,
-        duration: Duration(milliseconds: 100),
-        curve: Curves.fastOutSlowIn,
-      );
-    } else {
-      setState(() {
-        isFirstRender = false;
-      });
-    }
+    // //to be fixed: on 2nd render scroll to browse part
+    // if (!isFirstRender) {
+    //   scrollController.animateTo(
+    //     670,
+    //     duration: Duration(milliseconds: 100),
+    //     curve: Curves.fastOutSlowIn,
+    //   );
+    // } else {
+    //   setState(() {
+    //     isFirstRender = false;
+    //   });
+    // }
   }
 
   @override
@@ -153,163 +155,189 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     actions: [
-                      Container(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Row(
-                          children: [
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.language_rounded,
-                                  size: 30,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Text(
-                                      'Eng',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                    Text(
-                                      'Ukr',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w700),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            const ProfileBtn()
-                          ],
+                      GestureDetector(
+                        onTap: () async {
+                          refreshMovies();
+                          if (context.locale == Locale('en')) {
+                            SecureStorage.setLang('uk');
+                            context.setLocale(Locale('uk'));
+                          } else {
+                            SecureStorage.setLang('en');
+                            context.setLocale(Locale('en'));
+                          }
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Row(
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.language_rounded,
+                                    size: 30,
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Eng',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            color:
+                                                context.locale == Locale('en')
+                                                    ? Colors.orange
+                                                    : Colors.grey),
+                                      ),
+                                      Text(
+                                        'Ua',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            color:
+                                                context.locale == Locale('en')
+                                                    ? Colors.grey
+                                                    : Colors.orange),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              const ProfileBtn()
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
                   body: SingleChildScrollView(
                     controller: scrollController,
-                    child: Column(children: [
-                      SizedBox(
-                        height: 660,
-                        child: MoviesCarousel(movies: getTopMovies(movies)),
-                      ),
-                      Center(
-                        child: Container(
-                          padding: EdgeInsets.all(20),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 8.0,
-                                  bottom: 8.0,
-                                ),
-                                child: Container(
-                                  child: TextField(
-                                    style: const TextStyle(color: Colors.white),
-                                    textAlignVertical: TextAlignVertical.center,
-                                    controller: _searchController,
-                                    decoration: InputDecoration(
-                                      hintStyle: const TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                      suffixStyle: const TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                      hintText: 'Search...',
-                                      suffixIcon: IconButton(
-                                        icon: const Icon(
-                                          Icons.clear,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 660,
+                          child: MoviesCarousel(movies: getTopMovies(movies)),
+                        ),
+                        Center(
+                          child: Container(
+                            padding: EdgeInsets.all(20),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 8.0,
+                                    bottom: 8.0,
+                                  ),
+                                  child: Container(
+                                    child: TextField(
+                                      style:
+                                          const TextStyle(color: Colors.white),
+                                      textAlignVertical:
+                                          TextAlignVertical.center,
+                                      controller: _searchController,
+                                      decoration: InputDecoration(
+                                        hintStyle: const TextStyle(
                                           color: Colors.white,
                                         ),
-                                        onPressed: () =>
-                                            _searchController.clear(),
-                                      ),
-                                      prefixIcon: IconButton(
-                                        icon: const Icon(
-                                          Icons.search,
+                                        suffixStyle: const TextStyle(
                                           color: Colors.white,
                                         ),
-                                        onPressed: () {
-                                          searchMovies();
-                                        },
-                                      ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          width: .3,
-                                          color: Color.fromARGB(
-                                              255, 223, 213, 207),
+                                        hintText: LocaleKeys.Search.tr(),
+                                        suffixIcon: IconButton(
+                                          icon: const Icon(
+                                            Icons.clear,
+                                            color: Colors.white,
+                                          ),
+                                          onPressed: () =>
+                                              _searchController.clear(),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                          color: Color(0xfffc6c19),
+                                        prefixIcon: IconButton(
+                                          icon: const Icon(
+                                            Icons.search,
+                                            color: Colors.white,
+                                          ),
+                                          onPressed: () {
+                                            searchMovies();
+                                          },
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            width: .3,
+                                            color: Color.fromARGB(
+                                                255, 223, 213, 207),
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0xfffc6c19),
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Container(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Text(
-                                      'Now in cinemas',
-                                      style: TextStyle(
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                    Expanded(
-                                      child: TextField(
-                                        style: TextStyle(color: Colors.white),
-                                        readOnly: true,
-                                        controller: dateController,
-                                        decoration: const InputDecoration(
-                                          border: InputBorder.none,
-                                          suffixIcon: Icon(
-                                            Icons.calendar_today,
-                                            size: 20,
-                                          ),
-                                          suffixIconColor: Colors.grey,
-                                          // icon: Icon(Icons.calendar_today),
-                                          labelText: "Select Date",
-                                          labelStyle:
-                                              TextStyle(color: Colors.grey),
-                                        ),
-                                        onTap: onTapDateField,
-                                      ),
-                                    ),
-                                  ],
+                                const SizedBox(
+                                  height: 20,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              MoviesList(movies: movies, mainDate: dateValue),
-                            ],
+                                Container(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        LocaleKeys.Now_in_cinemas.tr(),
+                                        style: const TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      Expanded(
+                                        child: TextField(
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                          readOnly: true,
+                                          controller: dateController,
+                                          decoration: InputDecoration(
+                                            border: InputBorder.none,
+                                            suffixIcon: const Icon(
+                                              Icons.calendar_today,
+                                              size: 12,
+                                            ),
+                                            suffixIconColor: Colors.grey,
+                                            // icon: Icon(Icons.calendar_today),
+                                            labelText:
+                                                LocaleKeys.Select_date.tr(),
+                                            labelStyle: const TextStyle(
+                                                color: Colors.grey),
+                                          ),
+                                          onTap: onTapDateField,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                MoviesList(movies: movies, mainDate: dateValue),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ]),
+                      ],
+                    ),
                   ),
                   floatingActionButton: AnimatedOpacity(
                       duration: const Duration(milliseconds: 400),
@@ -324,8 +352,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: RawMaterialButton(
                           shape: CircleBorder(),
                           elevation: 0.0,
-                          child: const Text(
-                            '↓ Browse more ↓',
+                          child: Text(
+                            LocaleKeys.Browse_more.tr(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 22),
                           ),

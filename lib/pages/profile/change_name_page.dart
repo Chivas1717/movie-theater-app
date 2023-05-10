@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_event.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 import 'package:movie_theater_app/pages/profile/profile_page.dart';
 
 import '../../components/profile/change_name_inputs.dart';
@@ -80,10 +82,10 @@ class ChangeNamePage extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        'Change your name',
+                                      Text(
+                                        LocaleKeys.Change_your_name.tr(),
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(fontSize: 22),
+                                        style: const TextStyle(fontSize: 22),
                                       ),
                                       const SizedBox(height: 20),
                                       ChangeNameInputs(

@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/payment_bloc/payment_bloc.dart';
 import 'package:movie_theater_app/blocs/payment_bloc/payment_state.dart';
 import 'package:movie_theater_app/components/movie/tickets_summary/confirm_tickets_button.dart';
 import 'package:movie_theater_app/components/movie/tickets_summary/tickets_summary_block.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 
 import '../../blocs/tickets_bloc/tickets_bloc.dart';
 import '../../blocs/tickets_bloc/tickets_event.dart';
@@ -47,9 +49,9 @@ class TicketSummaryPage extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   //Back icon and title
-                  const BackIconRow(
-                    text: 'Your tickets',
-                    marginLeft: 95,
+                  BackIconRow(
+                    text: LocaleKeys.Your_bookings.tr(),
+                    marginLeft: 65,
                   ),
 
                   const SizedBox(height: 20),

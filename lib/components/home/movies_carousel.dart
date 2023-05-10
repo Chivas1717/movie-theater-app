@@ -1,10 +1,12 @@
 import 'dart:developer';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_theater_app/models/movie_model.dart';
 
+import '../../generated/locale_keys.g.dart';
 import '../../pages/movie/movie_page.dart';
 
 class MoviesCarousel extends StatefulWidget {
@@ -108,7 +110,7 @@ class _MoviesCarouselState extends State<MoviesCarousel> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Text(
                                   movie.name!,
                                   style: TextStyle(
@@ -118,7 +120,7 @@ class _MoviesCarouselState extends State<MoviesCarousel> {
                                   ),
                                 ),
                                 // rating
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Container(
                                   child: Text(
                                     movie.genre!,
@@ -129,7 +131,7 @@ class _MoviesCarouselState extends State<MoviesCarousel> {
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 AnimatedOpacity(
                                   duration: Duration(milliseconds: 500),
                                   opacity:
@@ -172,7 +174,7 @@ class _MoviesCarouselState extends State<MoviesCarousel> {
                                               ),
                                               SizedBox(width: 5),
                                               Text(
-                                                '${movie.duration!}min',
+                                                '${movie.duration!}${context.locale == Locale('en') ? 'min' : 'хв'}',
                                                 style: TextStyle(
                                                   fontSize: 14.0,
                                                   color: Colors.grey.shade600,
@@ -193,11 +195,11 @@ class _MoviesCarouselState extends State<MoviesCarousel> {
                                                 color: Colors.grey.shade600,
                                                 size: 20,
                                               ),
-                                              SizedBox(width: 5),
+                                              const SizedBox(width: 5),
                                               Text(
-                                                'Watch',
+                                                LocaleKeys.Watch.tr(),
                                                 style: TextStyle(
-                                                  fontSize: 14.0,
+                                                  fontSize: 12.0,
                                                   color: Colors.grey.shade600,
                                                 ),
                                               ),

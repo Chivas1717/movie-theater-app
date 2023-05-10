@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_bloc.dart';
 import 'package:movie_theater_app/blocs/profile_bloc.dart/profile_event.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 
 import '../../pages/profile/profile_page.dart';
 
@@ -44,9 +46,9 @@ class ProfileBtn extends StatelessWidget {
             ),
           ],
         ),
-        child: const Center(
+        child: Center(
           child: Text(
-            'Profile',
+            context.locale == Locale('en') ? 'Profile' : "Профіль",
             style: TextStyle(fontWeight: FontWeight.w700),
           ),
         ),

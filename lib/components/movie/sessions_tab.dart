@@ -1,11 +1,13 @@
 import 'dart:developer';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:movie_theater_app/blocs/sessions_bloc/sessions_bloc.dart';
 import 'package:movie_theater_app/blocs/sessions_bloc/sessions_event.dart';
 import 'package:movie_theater_app/blocs/sessions_bloc/sessions_state.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 import 'package:movie_theater_app/models/movie_model.dart';
 import 'package:movie_theater_app/models/session_model.dart';
 import 'package:movie_theater_app/pages/movie/theater_page.dart';
@@ -174,7 +176,9 @@ class _SessionsTabState extends State<SessionsTab> {
                                   height: 6,
                                 ),
                                 Text(
-                                  'Time ${sortAsc ? '↓' : '↑'}',
+                                  context.locale == Locale('en')
+                                      ? 'Time ${sortAsc ? '↓' : '↑'}'
+                                      : 'Час ${sortAsc ? '↓' : '↑'}',
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w900,
                                     fontSize: 16,
@@ -191,8 +195,8 @@ class _SessionsTabState extends State<SessionsTab> {
                 SingleChildScrollView(
                   child: Table(
                     columnWidths: const {
-                      0: FlexColumnWidth(1.5),
-                      1: FlexColumnWidth(1),
+                      0: FlexColumnWidth(1.2),
+                      1: FlexColumnWidth(1.2),
                       2: FlexColumnWidth(1),
                       3: FlexColumnWidth(1),
                       4: FlexColumnWidth(1.5),
@@ -206,10 +210,10 @@ class _SessionsTabState extends State<SessionsTab> {
                         children: [
                           Container(
                             padding: const EdgeInsets.all(5),
-                            child: const Center(
+                            child: Center(
                               child: Text(
-                                'Time',
-                                style: TextStyle(
+                                LocaleKeys.Time.tr(),
+                                style: const TextStyle(
                                   color: Color.fromARGB(255, 106, 108, 116),
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -218,10 +222,11 @@ class _SessionsTabState extends State<SessionsTab> {
                           ),
                           Container(
                             padding: const EdgeInsets.all(5),
-                            child: const Center(
+                            child: Center(
                                 child: Text(
-                              'Normal',
-                              style: TextStyle(
+                              LocaleKeys.Normal.tr(),
+                              style: const TextStyle(
+                                fontSize: 11,
                                 color: Color.fromARGB(255, 106, 108, 116),
                                 fontWeight: FontWeight.bold,
                               ),
@@ -229,10 +234,11 @@ class _SessionsTabState extends State<SessionsTab> {
                           ),
                           Container(
                             padding: const EdgeInsets.all(5),
-                            child: const Center(
+                            child: Center(
                               child: Text(
-                                'Comfort',
+                                LocaleKeys.Comfort.tr(),
                                 style: TextStyle(
+                                  fontSize: 12,
                                   color: Color.fromARGB(255, 106, 108, 116),
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -302,7 +308,7 @@ class _SessionsTabState extends State<SessionsTab> {
                                 child: Text(
                                   getSessionPrices(sessions[i])['Normal'] == 0
                                       ? '-'
-                                      : '${getSessionPrices(sessions[i])['Normal']}',
+                                      : '${getSessionPrices(sessions[i])['Normal']}₴',
                                   style: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -315,7 +321,7 @@ class _SessionsTabState extends State<SessionsTab> {
                                 child: Text(
                                   getSessionPrices(sessions[i])['Comfort'] == 0
                                       ? '-'
-                                      : '${getSessionPrices(sessions[i])['Comfort']}',
+                                      : '${getSessionPrices(sessions[i])['Comfort']}₴',
                                   style: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -328,7 +334,7 @@ class _SessionsTabState extends State<SessionsTab> {
                                 child: Text(
                                   getSessionPrices(sessions[i])['VIP'] == 0
                                       ? '-'
-                                      : '${getSessionPrices(sessions[i])['VIP']}',
+                                      : '${getSessionPrices(sessions[i])['VIP']}₴',
                                   style: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -375,9 +381,9 @@ class _SessionsTabState extends State<SessionsTab> {
                                         ),
                                       ],
                                     ),
-                                    child: const Center(
+                                    child: Center(
                                       child: Text(
-                                        'Preview',
+                                        LocaleKeys.Preview.tr(),
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700),
                                       ),

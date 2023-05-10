@@ -1,4 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import '../../../generated/locale_keys.g.dart';
 
 class _Indicator {
   final String status;
@@ -11,14 +14,14 @@ class SeatsCategories extends StatelessWidget {
   const SeatsCategories();
 
   static final _indicators1 = [
-    _Indicator('Normal', Colors.white),
-    _Indicator('Comfort', Colors.yellow[200]!),
+    _Indicator(LocaleKeys.Normal.tr(), Colors.white),
+    _Indicator(LocaleKeys.Comfort.tr(), Colors.yellow[200]!),
     _Indicator('VIP', Colors.yellow[600]!),
   ];
 
   static final _indicators2 = [
-    _Indicator('Taken', Color(0xFF5A5A5A)),
-    _Indicator('Selected', Colors.red),
+    _Indicator(LocaleKeys.Taken.tr(), Color(0xFF5A5A5A)),
+    _Indicator(LocaleKeys.Selected.tr(), Colors.red),
   ];
 
   @override

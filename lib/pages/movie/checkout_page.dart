@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_theater_app/components/movie/billing/details.dart';
+import 'package:movie_theater_app/generated/locale_keys.g.dart';
 import 'package:movie_theater_app/pages/movie/tickets_summary_page.dart';
 
 import '../../components/movie/billing/credentials_input_block.dart';
@@ -51,8 +53,8 @@ class CheckoutPage extends StatelessWidget {
                             const SizedBox(height: 20),
 
                             //Back icon and title
-                            const BackIconRow(
-                              text: 'Payment checkout',
+                            BackIconRow(
+                              text: LocaleKeys.Payment_checkout.tr(),
                               marginLeft: 65,
                             ),
 
